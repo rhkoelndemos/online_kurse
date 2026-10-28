@@ -9,7 +9,7 @@
             --primary: #003366;
             --secondary: #0066cc;
             --accent: #ff9900;
-            --bg-color: #f4f7f6;
+            --bg-color: #e6f2ff;
             --text-color: #333;
             --card-bg: #fff;
         }
@@ -134,6 +134,15 @@
             margin-bottom: 0.5rem;
             cursor: pointer;
         }
+        .options label {
+            padding: 0.35rem 0.2rem;
+            -webkit-tap-highlight-color: rgba(0, 102, 204, 0.15);
+            touch-action: manipulation;
+        }
+        .options input[type="radio"] {
+            transform: scale(1.15);
+            margin-right: 0.4rem;
+        }
         button {
             background-color: var(--secondary);
             color: white;
@@ -143,6 +152,9 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background 0.3s;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
         }
         button:hover {
             background-color: var(--primary);
@@ -324,7 +336,7 @@
                         <label><input type="radio" name="q1_6" value="c"> C) Ausschließliche Bedienung klassischer Tabellenkalkulation.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(1, ['b', 'a', 'b', 'b', 'b', 'a'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(1, ['b', 'a', 'b', 'b', 'b', 'a'])">Antworten prüfen</button>
                 <div id="result1" class="result"></div>
             </div>
         </div>
@@ -453,7 +465,7 @@
                         <label><input type="radio" name="q2_8" value="c"> C) LLMs speichern jeden Chat dauerhaft als neues Wissen im Modell.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(2, ['b', 'a', 'c', 'b', 'a', 'a', 'b', 'b'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(2, ['b', 'a', 'c', 'b', 'a', 'a', 'b', 'b'])">Antworten prüfen</button>
                 <div id="result2" class="result"></div>
             </div>
         </div>
@@ -670,7 +682,7 @@ Priorität: Hoch</code></pre>
                         <label><input type="radio" name="q3_8" value="c"> C) Gute Prompts machen Datenschutz irrelevant.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(3, ['a', 'a', 'b', 'a', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(3, ['a', 'a', 'b', 'a', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
                 <div id="result3" class="result"></div>
             </div>
         </div>
@@ -842,7 +854,7 @@ Thema | Häufigkeit | Beispielaussage | Interpretation | Handlungsempfehlung</co
                         <label><input type="radio" name="q4_6" value="c"> C) Ob möglichst viele Fremdwörter enthalten sind.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(4, ['b', 'b', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(4, ['b', 'b', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
                 <div id="result4" class="result"></div>
             </div>
         </div>
@@ -993,7 +1005,7 @@ Products & Services | Pain Relievers | Gain Creators</code></pre>
                         <label><input type="radio" name="q5_6" value="c"> C) Vollständige Vermeidung von Wettbewerb.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(5, ['b', 'a', 'b', 'a', 'a', 'a'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(5, ['b', 'a', 'b', 'a', 'a', 'a'])">Antworten prüfen</button>
                 <div id="result5" class="result"></div>
             </div>
         </div>
@@ -1119,7 +1131,7 @@ Products & Services | Pain Relievers | Gain Creators</code></pre>
                         <label><input type="radio" name="q6_8" value="c"> C) Urheberrecht spielt im E-Commerce keine Rolle.</label>
                     </div>
                 </div>
-                <button onclick="checkQuiz(6, ['b', 'a', 'b', 'a', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
+                <button type="button" onclick="checkQuiz(6, ['b', 'a', 'b', 'a', 'a', 'a', 'a', 'a'])">Antworten prüfen</button>
                 <div id="result6" class="result"></div>
             </div>
         </div>
@@ -1259,37 +1271,64 @@ Prozessschritt | Input | KI-Aufgabe | Output | Human-in-the-Loop | Tool/System</
 </div>
 
 <script>
-    function checkQuiz(quizNum, correctAnswers) {
-        const resultDiv = document.getElementById('result' + quizNum);
-        let score = 0;
-        let allAnswered = true;
+    // iOS Safari & Mobile WebKit Fix: Sorgt dafür, dass Taps auf Labels und Buttons sofort und zuverlässig reagieren
+    document.addEventListener('DOMContentLoaded', function() {
+        var labels = document.querySelectorAll('.options label');
+        for (var i = 0; i < labels.length; i++) {
+            labels[i].setAttribute('onclick', '');
+        }
 
-        for (let i = 1; i <= correctAnswers.length; i++) {
-            const selected = document.querySelector(`input[name="q${quizNum}_${i}"]:checked`);
-            if (!selected) {
-                allAnswered = false;
-                break;
+        var buttons = document.querySelectorAll('.quiz-container button');
+        for (var j = 0; j < buttons.length; j++) {
+            buttons[j].setAttribute('type', 'button');
+        }
+    });
+
+    function checkQuiz(quizNum, correctAnswers) {
+        var resultDiv = document.getElementById('result' + quizNum);
+        var score = 0;
+        var unanswered = [];
+
+        for (var i = 1; i <= correctAnswers.length; i++) {
+            var radios = document.getElementsByName('q' + quizNum + '_' + i);
+            var selectedValue = null;
+
+            for (var j = 0; j < radios.length; j++) {
+                if (radios[j].checked) {
+                    selectedValue = radios[j].value;
+                    break;
+                }
             }
-            if (selected.value === correctAnswers[i-1]) {
+
+            if (!selectedValue) {
+                unanswered.push(i);
+            } else if (selectedValue === correctAnswers[i - 1]) {
                 score++;
             }
         }
 
-        if (!allAnswered) {
+        resultDiv.style.display = 'block';
+
+        if (unanswered.length > 0) {
             resultDiv.className = 'result error';
-            resultDiv.innerHTML = 'Bitte beantworten Sie alle Fragen.';
-            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = 'Bitte beantworten Sie noch folgende Frage(n): Nr. ' + unanswered.join(', ');
+            if (resultDiv.scrollIntoView) {
+                resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
             return;
         }
 
         if (score === correctAnswers.length) {
             resultDiv.className = 'result success';
-            resultDiv.innerHTML = `Perfekt! ${score} von ${correctAnswers.length} Fragen richtig beantwortet.`;
+            resultDiv.innerHTML = 'Perfekt! Alle ' + score + ' von ' + correctAnswers.length + ' Fragen richtig beantwortet.';
         } else {
             resultDiv.className = 'result error';
-            resultDiv.innerHTML = `Sie haben ${score} von ${correctAnswers.length} Fragen richtig. Bitte überprüfen Sie nochmal die Inhalte dieses Kapitels.`;
+            resultDiv.innerHTML = 'Sie haben ' + score + ' von ' + correctAnswers.length + ' Fragen richtig. Bitte überprüfen Sie nochmal die Inhalte dieses Kapitels.';
         }
-        resultDiv.style.display = 'block';
+
+        if (resultDiv.scrollIntoView) {
+            resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     }
 </script>
 

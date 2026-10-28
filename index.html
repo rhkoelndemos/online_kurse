@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Material</title>
+    <style>
+        :root {
+            --primary: #003366;
+            --secondary: #0066cc;
+            --accent: #ff9900;
+            --bg-color: #e6f2ff;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --muted: #666;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.4rem;
+            letter-spacing: 0.5px;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 960px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .category-section {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--secondary);
+        }
+        .category-section h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--bg-color);
+            padding-bottom: 0.6rem;
+            font-size: 1.5rem;
+        }
+        .material-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 0;
+            display: grid;
+            gap: 1rem;
+        }
+        .material-item {
+            border: 1px solid #d9e6f2;
+            border-radius: 6px;
+            background-color: #fafcfe;
+            transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+        }
+        .material-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 51, 102, 0.08);
+            border-color: var(--secondary);
+        }
+        .material-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            text-decoration: none;
+            color: var(--text-color);
+            gap: 1rem;
+            touch-action: manipulation;
+        }
+        .material-info {
+            display: flex;
+            flex-direction: column;
+        }
+        .material-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        .material-subtitle {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-top: 0.2rem;
+        }
+        .material-badge {
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.4rem 0.9rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: background-color 0.2s;
+        }
+        .material-item:hover .material-badge {
+            background-color: var(--primary);
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.9rem;
+            }
+            .category-section {
+                padding: 1.25rem;
+            }
+            .material-link {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .material-badge {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Online Material</h1>
+    <p>Vorlesungsunterlagen, interaktive Module &amp; Praxis-Übungen</p>
+</header>
+
+<main class="container">
+
+    <!-- RUBRIK 1: Digitale Geschäftsmodelle & eCommerce -->
+    <section class="category-section">
+        <h2>Digitale Geschäftsmodelle &amp; eCommerce</h2>
+        <ul class="material-list">
+            <li class="material-item">
+                <a class="material-link" href="10_Teil_DigiGM_EComm.html">
+                    <div class="material-info">
+                        <span class="material-title">Teil 10: Generative KI &amp; Prompt Engineering</span>
+                        <span class="material-subtitle">KI-Workflows, Data Literacy, R.C.T.F.E.-Framework, interaktive Quizzes &amp; Praxis-Übung</span>
+                    </div>
+                    <span class="material-badge">Öffnen &rarr;</span>
+                </a>
+            </li>
+
+            <!-- Vorlage für weitere Links in dieser Rubrik (einfach Kommentarzeichen entfernen):
+            <li class="material-item">
+                <a class="material-link" href="11_Teil_DigiGM_EComm.html">
+                    <div class="material-info">
+                        <span class="material-title">Teil 11: [Titel einfügen]</span>
+                        <span class="material-subtitle">[Kurzbeschreibung einfügen]</span>
+                    </div>
+                    <span class="material-badge">Öffnen &rarr;</span>
+                </a>
+            </li>
+            -->
+        </ul>
+    </section>
+
+    <!-- Vorlage für zukünftige Rubriken (einfach Kommentarzeichen entfernen):
+    <section class="category-section">
+        <h2>Weitere Rubrik (z. B. Online-Analytics / Data Literacy)</h2>
+        <ul class="material-list">
+            <li class="material-item">
+                <a class="material-link" href="beispiel.html">
+                    <div class="material-info">
+                        <span class="material-title">Teil 1: [Titel einfügen]</span>
+                        <span class="material-subtitle">[Kurzbeschreibung einfügen]</span>
+                    </div>
+                    <span class="material-badge">Öffnen &rarr;</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    -->
+
+</main>
+
+<footer>
+    <p>&copy; Online Material &ndash; Lehrveranstaltungen &amp; Begleitmaterialien</p>
+</footer>
+
+</body>
+</html>
