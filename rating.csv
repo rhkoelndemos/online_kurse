@@ -1,0 +1,53 @@
+product_id,product_name,rating,review_text,date
+P001,Regenjacke UrbanShield,2,"Sieht gut aus, aber nach zwei Wochen war der Reißverschluss kaputt.",2026-04-12
+P001,Regenjacke UrbanShield,5,"Sehr leicht, hält den Regen gut ab und passt perfekt. Ideal für den Arbeitsweg.",2026-04-14
+P002,Bluetooth-Kopfhörer SoundGo,3,"Der Klang ist in Ordnung für den Preis, aber der Akku hält nicht mal annähernd die versprochenen 10 Stunden.",2026-04-16
+P003,Küchenmaschine MixMaster,1,"Kam defekt an. Der Kundenservice reagiert seit drei Wochen nicht auf meine E-Mails. Absolut unverschämt!",2026-04-18
+P001,Regenjacke UrbanShield,4,"Schöne Jacke, erfüllt ihren Zweck. Fällt allerdings etwas klein aus, lieber eine Nummer größer bestellen.",2026-04-19
+P002,Bluetooth-Kopfhörer SoundGo,5,"Wahnsinns Sound! Noise Cancelling funktioniert erstaunlich gut in der Bahn. Klare Kaufempfehlung.",2026-04-20
+P003,Küchenmaschine MixMaster,4,"Macht was sie soll. Zubehör ist vielseitig. Nimmt aber extrem viel Platz in der Küche weg.",2026-04-21
+P001,Regenjacke UrbanShield,3,"Wasserdicht ist sie, aber man schwitzt extrem darin. Null atmungsaktiv.",2026-04-22
+P002,Bluetooth-Kopfhörer SoundGo,2,"Sitzen extrem unbequem, tun nach einer halben Stunde weh an den Ohren. Gehen zurück.",2026-04-23
+P003,Küchenmaschine MixMaster,5,"Meine Rettung für den Kuchenteig! Super starker Motor und leicht zu reinigen.",2026-04-24
+P001,Regenjacke UrbanShield,1,"Beim ersten Starkregen komplett durchnässt. Das als 'wasserdicht' zu verkaufen ist ein Witz.",2026-04-25
+P002,Bluetooth-Kopfhörer SoundGo,4,"Verbindung mit dem iPhone klappt problemlos. Manchmal kurze Aussetzer beim Joggen.",2026-04-26
+P001,Regenjacke UrbanShield,5,"Farbe (gelb) leuchtet toll. Fühle mich sicher auf dem Fahrrad im Dunkeln.",2026-04-27
+P003,Küchenmaschine MixMaster,3,"Lautstärke gleicht einem startenden Flugzeug. Knetet aber gut.",2026-04-28
+P002,Bluetooth-Kopfhörer SoundGo,1,"Bluetooth bricht ständig ab. Unbrauchbar für Meetings.",2026-04-29
+P001,Regenjacke UrbanShield,4,"Lieferung hat über eine Woche gedauert (Prime??), aber die Jacke selbst ist top verarbeitet.",2026-04-30
+P003,Küchenmaschine MixMaster,2,"Nach 3 Monaten ist ein Plastikzahnrad gebrochen. Keine Ersatzteile lieferbar laut Support.",2026-05-01
+P002,Bluetooth-Kopfhörer SoundGo,5,"Alles okay, funktioniert.",2026-05-02
+P001,Regenjacke UrbanShield,3,"Optisch schön, aber viel zu teuer für so ein dünnes Material.",2026-05-03
+P003,Küchenmaschine MixMaster,4,"Design ist ein Hingucker. Knetet auch schweren Pizzateig mühelos.",2026-05-04
+P002,Bluetooth-Kopfhörer SoundGo,3,"Mikrofonqualität bei Anrufen ist miserabel, mein Gegenüber versteht mich kaum.",2026-05-05
+P001,Regenjacke UrbanShield,2,"Schon wieder das Problem mit dem Reißverschluss, verhakt sich ständig.",2026-05-06
+P003,Küchenmaschine MixMaster,5,"Top Gerät! Steht bombenfest durch die Saugnäpfe, wandert nicht beim Kneten.",2026-05-07
+P001,Regenjacke UrbanShield,4,"Gutes Preis-Leistungs-Verhältnis. Kapuze könnte etwas größer sein.",2026-05-08
+P002,Bluetooth-Kopfhörer SoundGo,4,"Tolles Case, schnell aufgeladen. Bass ist mir persönlich etwas zu flach.",2026-05-09
+P001,Regenjacke UrbanShield,1,"Viel zu eng an den Schultern, obwohl ich nach Tabelle bestellt habe. Retoure nervt.",2026-05-10
+P003,Küchenmaschine MixMaster,1,"Motor ist beim Brotbacken abgeraucht. Gefährlich!",2026-05-11
+P002,Bluetooth-Kopfhörer SoundGo,5,"Ich liebe diese Kopfhörer! Bestes Geburtstagsgeschenk ever.",2026-05-12
+P001,Regenjacke UrbanShield,5,"Passt super auch noch mit einem dicken Pullover drunter. Klettverschlüsse an den Ärmeln sind praktisch.",2026-05-13
+P003,Küchenmaschine MixMaster,4,"Gute Maschine, aber Anleitung nur auf Englisch und Chinesisch.",2026-05-14
+P002,Bluetooth-Kopfhörer SoundGo,2,"Das Material der Ohrpolster bröckelt nach wenigen Wochen ab. Schlechte Qualität.",2026-05-15
+P001,Regenjacke UrbanShield,3,"Normale Jacke halt. Nichts Besonderes. Hält Regen ab.",2026-05-16
+P003,Küchenmaschine MixMaster,5,"Hatte vorher eine von Bosch, diese hier steht der Markenware in nichts nach!",2026-05-17
+P002,Bluetooth-Kopfhörer SoundGo,4,"Touch-Bedienung ist anfangs gewöhnungsbedürftig, löst oft ungewollt aus.",2026-05-18
+P001,Regenjacke UrbanShield,2,"Lieferung war schnell. Jacke stinkt leider extrem nach Chemie beim Auspacken.",2026-05-19
+P003,Küchenmaschine MixMaster,3,"Rührtastatur klemmt manchmal. Für den Hobbybäcker reicht's.",2026-05-20
+P002,Bluetooth-Kopfhörer SoundGo,1,"Lassen sich nach dem Update nicht mehr mit dem Laptop koppeln. Schrott.",2026-05-21
+P001,Regenjacke UrbanShield,5,"Perfekt für den Spaziergang mit dem Hund im Herbst.",2026-05-22
+P003,Küchenmaschine MixMaster,4,"Sehr schweres Gerät, Paketbote tat mir leid. Aber läuft sehr ruhig.",2026-05-23
+P002,Bluetooth-Kopfhörer SoundGo,5,"Verpackung war beschädigt, aber Produkt intakt. Nutze sie täglich fürs Gym.",2026-05-24
+P001,Regenjacke UrbanShield,4,"Ich trage sie gerne, weil sie so leicht ist. Man kann sie super zusammenrollen.",2026-05-25
+P003,Küchenmaschine MixMaster,2,"Schneebesen-Aufsatz reicht nicht bis zum Boden, kleine Mengen Sahne schlagen geht nicht.",2026-05-26
+P002,Bluetooth-Kopfhörer SoundGo,3,"Design top, Sound naja. Da zahlt man nur für den Look.",2026-05-27
+P001,Regenjacke UrbanShield,1,"Die Farbe weicht total vom Bild ab. Ist eher ein schmutziges Ockergelb.",2026-05-28
+P003,Küchenmaschine MixMaster,5,"Kinderleicht zu bedienen. Meine Kids machen jetzt den Pfannkuchenteig alleine.",2026-05-29
+P002,Bluetooth-Kopfhörer SoundGo,4,"Gutes Einstiegsmodell. Wer Hi-Fi erwartet, muss eben 200 Euro mehr zahlen.",2026-05-30
+P001,Regenjacke UrbanShield,3,"Nähte sehen teilweise etwas unsauber verarbeitet aus.",2026-05-31
+P003,Küchenmaschine MixMaster,1,"Rücksendung ist eine Katastrophe, man muss den Versand nach Asien selbst zahlen!",2026-06-01
+P002,Bluetooth-Kopfhörer SoundGo,5,"Noch nicht ausgepackt, ist ein Geschenk. Sieht aber hochwertig aus.",2026-06-02
+P001,Regenjacke UrbanShield,4,"Sehr funktionell. Innentasche für das Handy wäre noch schön gewesen.",2026-06-03
+P003,Küchenmaschine MixMaster,4,"Lässt sich gut in der Spülmaschine reinigen (die Schüssel).",2026-06-04
+P002,Bluetooth-Kopfhörer SoundGo,2,"Viel zu groß für meine Ohren, fallen beim Laufen sofort raus.",2026-06-05
