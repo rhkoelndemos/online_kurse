@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Grundlagen der Statistik – Interaktive Lernplattform</title>
+<style>
+:root{
+  --bg:#0b1020; --panel:#121a33; --panel2:#182242; --card:#ffffff; --text:#eef3ff; --muted:#aab7d9;
+  --ink:#13213f; --ink2:#4c5f86; --accent:#6ee7f9; --accent2:#a78bfa; --accent3:#86efac;
+  --warn:#fbbf24; --danger:#fb7185; --ok:#34d399; --line:#29365f; --shadow:0 18px 55px rgba(0,0,0,.25);
+  --radius:22px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,Segoe UI,Roboto,Arial,sans-serif;background:
+radial-gradient(circle at top left,rgba(103,232,249,.22),transparent 35%),radial-gradient(circle at 80% 10%,rgba(167,139,250,.18),transparent 32%),linear-gradient(180deg,#0b1020,#10172e 45%,#edf3ff 45%,#f7f9ff);color:var(--text)}
+body:before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;pointer-events:none;z-index:-1}.wrap{max-width:1220px;margin:0 auto;padding:26px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:stretch;margin-top:18px}.heroCard,.sideCard,.section,.module,.tool{background:rgba(18,26,51,.86);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);box-shadow:var(--shadow)}.heroCard{padding:34px}.eyebrow{display:inline-flex;gap:8px;align-items:center;border:1px solid rgba(110,231,249,.35);border-radius:999px;padding:8px 12px;color:#dffbff;background:rgba(110,231,249,.08);font-size:.86rem}.hero h1{font-size:clamp(2rem,4vw,4.6rem);line-height:.96;margin:18px 0 12px;letter-spacing:-.06em}.hero p{color:var(--muted);font-size:1.08rem;line-height:1.6}.ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:14px;padding:12px 16px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071225;box-shadow:0 10px 24px rgba(110,231,249,.18)}.btn.secondary{background:rgba(255,255,255,.08);color:var(--text);border:1px solid rgba(255,255,255,.16);box-shadow:none}.btn.small{padding:8px 11px;border-radius:11px;font-size:.85rem}.sideCard{padding:24px;display:flex;flex-direction:column;justify-content:space-between}.progressShell{height:12px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;margin:12px 0}.progressBar{height:100%;width:0%;background:linear-gradient(90deg,var(--accent3),var(--accent),var(--accent2));transition:.4s}.metaGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.mini{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:12px}.mini b{font-size:1.35rem;color:var(--accent)}.mini span{display:block;color:var(--muted);font-size:.82rem;margin-top:4px}.nav{position:sticky;top:0;z-index:10;background:rgba(8,13,30,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08);margin:22px -26px 0;padding:12px 26px;display:flex;gap:10px;overflow:auto}.nav a{white-space:nowrap;color:#d8e5ff;text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:9px 12px;font-size:.88rem;background:rgba(255,255,255,.05)}.nav a.active{background:linear-gradient(135deg,rgba(110,231,249,.25),rgba(167,139,250,.22));border-color:rgba(110,231,249,.6)}main{color:var(--ink)}.section{background:rgba(255,255,255,.92);color:var(--ink);margin-top:24px;padding:24px;border-color:rgba(19,33,63,.08)}.section h2{font-size:clamp(1.5rem,2.6vw,2.35rem);letter-spacing:-.04em;margin:0 0 8px}.section p.lead{color:var(--ink2);line-height:1.65;margin:0 0 18px}.modules{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.module{background:var(--card);border:1px solid #dfe7fb;color:var(--ink);box-shadow:0 12px 32px rgba(30,50,100,.08);padding:18px}.moduleHead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.badge{font-weight:900;color:#0f172a;background:#e0f7ff;border:1px solid #b8efff;border-radius:999px;padding:7px 10px;font-size:.8rem}.tag{display:inline-block;margin:4px 4px 0 0;font-size:.78rem;background:#eef2ff;border:1px solid #dbe4ff;border-radius:999px;padding:6px 9px;color:#385079}.module h3{margin:4px 0 8px;font-size:1.18rem}.module p{color:#536487;line-height:1.55}.check{display:flex;gap:10px;align-items:flex-start;margin-top:12px;padding-top:12px;border-top:1px dashed #dbe4ff}.check input{margin-top:3px;transform:scale(1.1)}.toolsGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.tool{background:#fff;border:1px solid #dfe7fb;color:var(--ink);box-shadow:0 12px 32px rgba(30,50,100,.08);padding:18px}.tool h3{margin:0 0 8px}.tool p{color:#52617e}.inputRow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.inputRow.three{grid-template-columns:1fr 1fr 1fr}.inputRow label{font-size:.8rem;color:#566585;font-weight:700}.inputRow input,.tool textarea,.tool select{width:100%;border:1px solid #cfdaf2;border-radius:12px;padding:10px;background:#f8fbff;color:#11203d;font:inherit}.tool textarea{min-height:68px;resize:vertical}.result{background:#f2f7ff;border:1px solid #d6e5ff;border-radius:15px;padding:12px;margin-top:12px;white-space:pre-wrap;line-height:1.45}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#0f172a;color:#dffbff;border-radius:14px;padding:11px;overflow:auto}.canvasWrap{background:#f8fbff;border:1px solid #dbe6fb;border-radius:16px;padding:10px;margin-top:10px}canvas{max-width:100%;height:auto;display:block}.quizBox{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}.qCard{background:#fff;border:1px solid #dfe7fb;border-radius:18px;padding:16px}.options button{display:block;width:100%;text-align:left;margin:8px 0;padding:12px;border-radius:13px;border:1px solid #d4def5;background:#f8fbff;cursor:pointer;color:#13213f}.options button.correct{border-color:#54d991;background:#ecfdf5}.options button.wrong{border-color:#fb7185;background:#fff1f2}.flash{min-height:180px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:1.2rem;font-weight:800;background:linear-gradient(135deg,#eefcff,#f3efff);border-radius:18px;border:1px solid #dbe6fb;padding:18px;cursor:pointer}.footer{color:#dae6ff;margin:30px 0;text-align:center}.toc{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.toc button{border:1px solid #dfe7fb;background:#fff;border-radius:14px;padding:12px;text-align:left;cursor:pointer;color:#13213f}.toc button:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(30,50,100,.1)}.pill{font-size:.72rem;font-weight:900;color:#4338ca}.kbd{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#e8efff;border:1px solid #cdd9f5;padding:2px 6px;border-radius:7px}.note{background:#fff7ed;border:1px solid #fed7aa;border-radius:16px;padding:14px;color:#6b3d12}.hidden{display:none!important}
+.regModeRow{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 12px}.modeBtn{border:1px solid #cfdaf2;background:#f8fbff;color:#13213f;border-radius:999px;padding:8px 12px;font-weight:800;cursor:pointer}.modeBtn.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#071225}.sliderBox{background:#f8fbff;border:1px solid #dbe6fb;border-radius:16px;padding:12px;margin:10px 0}.sliderBox label{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;font-weight:800;color:#566585;margin:8px 0 4px}.sliderBox input[type=range]{width:100%;accent-color:#6ee7f9}.simEq{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;background:#0f172a;color:#dffbff;border-radius:12px;padding:9px 10px;margin-top:10px}.regKpi{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}.regKpiBox{background:linear-gradient(135deg,#eefcff,#f3efff);border:1px solid #dbe6fb;border-radius:14px;padding:10px}.regKpiBox b{display:block;font-size:1.35rem;color:#4338ca}.regKpiBox span{display:block;font-size:.78rem;color:#566585;font-weight:800;margin-top:2px}
+.tool.wide{grid-column:1/-1}
+.embedFrame{margin-top:14px;border:1px solid #dbe6fb;border-radius:18px;overflow:hidden;background:#f8fbff;box-shadow:0 12px 32px rgba(30,50,100,.08)}
+.embedFrame iframe{display:block;width:100%;height:520px;border:0;background:#f8fbff}
+@media(max-width:720px){.embedFrame iframe{height:700px}}
+@media(max-width:900px){.hero,.modules,.toolsGrid,.quizBox{grid-template-columns:1fr}.toc{grid-template-columns:repeat(2,1fr)}.inputRow,.inputRow.three{grid-template-columns:1fr}.wrap{padding:16px}.nav{margin-left:-16px;margin-right:-16px;padding:10px 16px}}@media print{.nav,.ctaRow,.btn{display:none}body{background:white}.section,.module,.tool,.heroCard,.sideCard{box-shadow:none}.hero{grid-template-columns:1fr}.modules,.toolsGrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero" id="top">
+    <div class="heroCard">
+      <div class="eyebrow">📊 Grundlagen der Statistik · Klausurvorbereitung</div>
+      <h1>Grundlagen Statistik</h1>
+      <p>Interaktive Lernplattform zur Wiederholung der Vorlesung „Grundlagen der Statistik“. Die Kapitelnummerierung und Inhalte orientieren sich an das Buch <b>„Statistik ohne Angst vor Formeln“</b> von <b>Andreas Quatember</b>.</p>
+      <div class="ctaRow"><a class="btn" href="#lernen">Lernpfad starten</a><a class="btn secondary" href="#tools">Rechner öffnen</a><a class="btn secondary" href="#quiz">Quiz üben</a></div>
+    </div>
+    <aside class="sideCard">
+      <div><h2 style="margin:0">Mein Lernfortschritt</h2><p style="color:var(--muted)">Markiere die Kapitel, die du sicher beherrschst.</p><div class="progressShell"><div class="progressBar" id="progressBar"></div></div><div id="progressText">0 von 10 Teilen abgeschlossen</div></div>
+      <div class="metaGrid"><div class="mini"><b>10</b><span>Vorlesungsteile</span></div><div class="mini"><b>9</b><span>interaktive Tools</span></div><div class="mini"><b>25+</b><span>Prüfungsfragen</span></div><div class="mini"><b>1</b><span>One Pager</span></div></div>
+    </aside>
+  </section>
+  <nav class="nav" id="nav"><a href="#lernen">Lernpfad</a><a href="#formeln">Formeln</a><a href="#tools">Rechner</a><a href="#quiz">Quiz & Karten</a><a href="#klausur">Klausur-Check</a></nav>
+
+  <main>
+    <section class="section" id="lernen">
+      <h2>1. Lernpfad nach Vorlesungsteilen</h2>
+      <p class="lead">Jeder Block enthält das Thema, die wichtigsten Lernziele, typische Prüfungsfragen und eine Checkbox für deinen Lernstand.</p>
+      <div class="toc" id="toc"></div>
+      <div class="modules" id="modules"></div>
+    </section>
+
+    <section class="section" id="formeln">
+      <h2>2. Formel- und Interpretationskarte</h2>
+      <p class="lead">Die wichtigsten Formeln kompakt: Rechnen ist nur die halbe Klausur. Entscheidend ist die Interpretation.</p>
+      <div class="toolsGrid">
+        <div class="tool"><h3>Häufigkeiten</h3><div class="formula">relative Häufigkeit: pᵢ = hᵢ / n<br>Prozent: pᵢ · 100<br>kumulierte Häufigkeit: Summe bis zur Klasse i</div><p>Nutzen: Verteilungen tabellarisch und grafisch beschreiben.</p></div>
+        <div class="tool"><h3>Lage</h3><div class="formula">Mittelwert: x̄ = Σxᵢ / n<br>Median: mittlerer Wert der sortierten Daten<br>Modus: häufigster Wert</div><p>Prüfungsfalle: Ausreißer können den Mittelwert stark verschieben.</p></div>
+        <div class="tool"><h3>Streuung</h3><div class="formula">Varianz: s² = Σ(xᵢ − x̄)² / n<br>Standardabweichung: s = √s²<br>Variationskoeffizient: v = s / x̄</div><p>Interpretation: Je größer s, desto stärker streuen die Daten um den Mittelwert.</p></div>
+        <div class="tool"><h3>Zusammenhang</h3><div class="formula">Korrelation: r = sxy / (sx · sy)<br>Regression: ŷ = a + b·x<br>Bestimmtheitsmaß: R² = erklärter Anteil der Streuung</div><p>Merke: Korrelation zeigt Zusammenhang, beweist aber keine Kausalität.</p></div>
+        <div class="tool"><h3>Chi-Quadrat</h3><div class="formula">Eᵢⱼ = Zeilensumme · Spaltensumme / Gesamt<br>χ² = Σ (Oᵢⱼ − Eᵢⱼ)² / Eᵢⱼ</div><p>Prüft, ob zwei kategoriale Merkmale unabhängig sind.</p></div>
+        <div class="tool"><h3>Normalverteilung</h3><div class="formula">Z = (x − μ) / σ<br>68–95–99,7-Regel:<br>μ±1σ ≈ 68,3%, μ±2σ ≈ 95,4%, μ±3σ ≈ 99,7%</div><p>Wahrscheinlichkeiten entsprechen Flächen unter der Dichtekurve.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="tools">
+      <h2>3. Interaktive Rechner und Visualisierungen</h2>
+      <p class="lead">Die Tools funktionieren direkt im Browser. Werte können durch Komma oder Semikolon getrennt eingegeben werden.</p>
+      <div class="toolsGrid">
+        <div class="tool"><h3>Tool 1 · Häufigkeitsverteilung</h3><p>Beispiel: Klausurpunkte oder Bewertungen.</p><textarea id="freqData">4,5,5,6,4,3,5,7,2,4,5,6,5,1,0,4,6,7,5,5</textarea><button class="btn small" onclick="calcFreq()">Berechnen</button><div class="result" id="freqOut"></div><div class="canvasWrap"><canvas id="freqCanvas" width="560" height="260"></canvas></div></div>
+        <div class="tool"><h3>Tool 2 · Lage & Streuung</h3><p>Mittelwert, Median, Modus, Varianz, Standardabweichung.</p><textarea id="statData">6,5,1,0,4,5,5,6,4,3</textarea><button class="btn small" onclick="calcStats()">Kennzahlen berechnen</button><div class="result" id="statOut"></div></div>
+        <div class="tool"><h3>Tool 3 · Lorenzkurve & Konzentration</h3><p>Beispiel Einkommen: 1000, 1000, 1000, 3000, 4000.</p><textarea id="lorenzData">1000,1000,1000,3000,4000</textarea><button class="btn small" onclick="calcLorenz()">Lorenzkurve zeichnen</button><div class="result" id="lorenzOut"></div><div class="canvasWrap"><canvas id="lorenzCanvas" width="560" height="320"></canvas></div></div>
+        
+        <div class="tool"><h3>Tool 4 · Korrelation & Regression</h3><p>Beispiel: Werbeanzeigen x und Webseitenbesuche y. Im Simulationsmodus kannst du die Gerade ŷ = b₀ + b₁·x direkt verändern.</p><div class="regModeRow"><button class="modeBtn active" id="regDataBtn" onclick="setRegMode('data')">Datenmodus</button><button class="modeBtn" id="regSimBtn" onclick="setRegMode('sim')">Simulationsmodus</button></div><div id="regDataPanel"><div class="inputRow"><div><label>x-Werte</label><textarea id="xData">3,0,5,2,1,4</textarea></div><div><label>y-Werte</label><textarea id="yData">21,15,23,19,16,24</textarea></div></div><button class="btn small" onclick="calcReg()">Regression berechnen</button></div><div id="regSimPanel" class="hidden"><div class="sliderBox"><label>Steigung b₁ <span id="simSlopeVal">1.90</span></label><input id="simSlope" type="range" min="-5" max="5" step="0.1" value="1.9" oninput="drawRegSimulation()"><label>Y-Achsenabschnitt b₀ <span id="simInterceptVal">15.00</span></label><input id="simIntercept" type="range" min="0" max="30" step="0.5" value="15" oninput="drawRegSimulation()"><div class="simEq" id="simEquation">ŷ = 15.00 + 1.90·x</div></div><button class="btn small secondary" onclick="resetRegSimulation()">Simulation zurücksetzen</button></div><div class="regKpi"><div class="regKpiBox"><b id="regR2Kpi">R² = —</b><span>Bestimmtheitsmaß / Modellgüte</span></div><div class="regKpiBox"><b id="regEqKpi">ŷ = —</b><span>Regressionsgerade</span></div></div><div class="result" id="regOut"></div><div class="canvasWrap"><canvas id="regCanvas" width="560" height="320"></canvas></div></div>
+        
+        <div class="tool wide" id="chiQuadratTool"><h3>Tool 5 · Chi-Quadrat kompakt</h3><p>Beobachtete Häufigkeiten eingeben, χ²-Test berechnen und direkt interpretieren.</p><div class="embedFrame"><iframe id="chiQuadratFrame" title="Chi-Quadrat Rechner – Kreuztabelle"></iframe></div></div>
+        <div class="tool"><h3>Tool 6 · Würfel-Simulation</h3><p>Wahrscheinlichkeitstheorie: relative Häufigkeit stabilisiert sich bei vielen Wiederholungen. Jetzt mit 1, 2 oder 3 Würfeln.</p><div class="inputRow"><div><label>Anzahl Würfe</label><input id="diceN" type="number" value="120"></div><div><label>Anzahl Würfel</label><select id="diceCount" onchange="updateDiceEvents()"><option value="1">1 Würfel</option><option value="2">2 Würfel</option><option value="3">3 Würfel</option></select></div><div><label>Gesuchtes Ereignis</label><select id="diceEvent"></select></div></div><button class="btn small" onclick="simDice()">Simulieren</button><div class="result" id="diceOut"></div><div class="canvasWrap"><canvas id="diceCanvas" width="560" height="260"></canvas></div></div>
+        <div class="tool"><h3>Tool 7 · Z-Score</h3><p>Vergleiche Werte aus unterschiedlichen Verteilungen.</p><div class="inputRow three"><div><label>x</label><input id="zX" value="70"></div><div><label>μ</label><input id="zMu" value="80"></div><div><label>σ</label><input id="zSigma" value="5"></div></div><button class="btn small" onclick="calcZ()">Z berechnen</button><div class="result" id="zOut"></div></div>
+        <div class="tool"><h3>Tool 8 · Normalverteilung: Intervall</h3><p>Berechnet näherungsweise P(a ≤ X ≤ b).</p><div class="inputRow"><div><label>μ</label><input id="nMu" value="80"></div><div><label>σ</label><input id="nSigma" value="5"></div><div><label>a</label><input id="nA" value="70"></div><div><label>b</label><input id="nB" value="90"></div></div><button class="btn small" onclick="calcNormal()">Wahrscheinlichkeit berechnen</button><div class="result" id="normalOut"></div><div class="canvasWrap"><canvas id="normalCanvas" width="560" height="300"></canvas></div></div>
+        <div class="tool"><h3>Tool 9 · Relative Häufigkeiten visualisieren</h3><p>Beispiel: Altersverteilung einer Schulklasse mit 40 Kindern von 15 bis 19 Jahren. Umschaltbar zwischen Balkendiagramm und Tortendiagramm.</p><textarea id="relFreqData">15:4, 16:8, 17:12, 18:10, 19:6</textarea><div class="inputRow"><div><label>Darstellung</label><select id="relChartType"><option value="bar">Balkendiagramm</option><option value="pie">Tortendiagramm</option></select></div><div><label>Beschriftung</label><input id="relFreqLabel" value="Alter in Jahren"></div></div><button class="btn small" onclick="calcRelFreq()">Darstellung erzeugen</button><div class="result" id="relFreqOut"></div><div class="canvasWrap"><canvas id="relFreqCanvas" width="560" height="300"></canvas></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="quiz">
+      <h2>4. Quiz und Karteikarten</h2>
+      <p class="lead">Kurze Wiederholung für die Klausur. Erst antworten, dann die Begründung lesen.</p>
+      <div class="quizBox">
+        <div class="qCard"><h3>Mini-Quiz</h3><div id="qText" style="font-weight:800;margin-bottom:8px"></div><div class="options" id="qOptions"></div><div class="result" id="qFeedback">Wähle eine Antwort.</div><button class="btn small" onclick="nextQuestion()">Nächste Frage</button></div>
+        <div class="qCard"><h3>Karteikarte</h3><div class="flash" id="flash" onclick="flipCard()">Karte anklicken</div><div class="ctaRow"><button class="btn small" onclick="prevCard()">Zurück</button><button class="btn small" onclick="nextCard()">Weiter</button></div></div>
+      </div>
+    </section>
+
+    <section class="section" id="klausur">
+      <h2>5. Klausur-Checkliste</h2>
+      <p class="lead">Diese Punkte sollten Studierende vor der Klausur sicher beherrschen.</p>
+      <div class="modules">
+        <div class="module"><h3>Rechenkompetenz</h3><p>Häufigkeiten, Mittelwert, Median, Varianz, Standardabweichung, Korrelation, Regression, χ², Z-Score und Normalverteilungsintervalle berechnen.</p></div>
+        <div class="module"><h3>Interpretationskompetenz</h3><p>Ergebnisse in Alltagssprache erklären: „Was bedeutet r?“, „Warum ist der Median robuster?“, „Was sagt R² aus?“</p></div>
+        <div class="module"><h3>Grafische Kompetenz</h3><p>Tabellen, Balkendiagramme, Lorenzkurve, Streudiagramm und Glockenkurve lesen und typische Muster erkennen.</p></div>
+        <div class="module"><h3>Typische Fehler vermeiden</h3><p>Korrelation nicht mit Kausalität verwechseln, absolute und relative Häufigkeiten trennen, σ nicht mit σ² verwechseln, Wahrscheinlichkeiten bei stetigen Verteilungen als Flächen interpretieren.</p></div>
+      </div>
+      <div class="note" style="margin-top:16px"><b>Didaktischer Hinweis:</b> Für eine 90-Minuten-Klausur eignet sich eine Mischung aus kurzen Verständnisfragen, Rechenaufgaben und einer Interpretationsaufgabe mit realistischem Kontext, z. B. E-Commerce, Marketing, Noten oder Umfragedaten.</div>
+    </section>
+  </main>
+  <div class="footer">© Grundlagen der Statistik · Interaktiver One Pager · Prof. Dr. Theo Almeida Murphy · RH Köln</div>
+</div>
+
+<template id="chiQuadratTemplate">
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>χ² Rechner – Kreuztabelle</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0d0f14;
+    --surface:   #151820;
+    --card:      #1c2030;
+    --border:    #2a2f42;
+    --accent:    #5b6bff;
+    --accent2:   #ff6b6b;
+    --accent3:   #6bffb8;
+    --text:      #e8eaf2;
+    --muted:     #7a7f96;
+    --mono:      'JetBrains Mono', monospace;
+    --sans:      'Syne', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    min-height: 100vh;
+    padding: 2rem 1rem 4rem;
+  }
+
+  /* ── background grid ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(91,107,255,.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(91,107,255,.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; z-index: 0;
+  }
+
+  .wrap { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; }
+
+  /* ── header ── */
+  header { text-align: center; margin-bottom: 3rem; }
+  .chi-symbol {
+    font-size: 5rem; line-height: 1;
+    background: linear-gradient(135deg, var(--accent), var(--accent3));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: var(--mono);
+    display: block;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100% { filter: drop-shadow(0 0 12px rgba(91,107,255,.5)); }
+    50%      { filter: drop-shadow(0 0 28px rgba(107,255,184,.6)); }
+  }
+  header h1 { font-size: 1.6rem; font-weight: 800; letter-spacing: -.02em; margin-top: .4rem; }
+  header p  { color: var(--muted); font-size: .9rem; margin-top: .4rem; font-family: var(--mono); }
+
+  /* ── cards ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .card-title {
+    font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  .card-title span { color: var(--accent); }
+
+  /* ── size controls ── */
+  .size-row {
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .size-row label { font-size: .85rem; color: var(--muted); font-family: var(--mono); }
+  .size-btn-group { display: flex; gap: .3rem; }
+  .size-btn {
+    width: 32px; height: 32px; border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface); color: var(--text);
+    font-family: var(--mono); font-size: .9rem; cursor: pointer;
+    transition: all .15s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .size-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .size-badge {
+    background: var(--accent); color: #fff;
+    font-family: var(--mono); font-size: .85rem; font-weight: 700;
+    padding: .2rem .6rem; border-radius: 4px; min-width: 28px; text-align: center;
+  }
+  .sep { color: var(--border); font-family: var(--mono); font-size: 1.2rem; }
+
+  /* ── row / col labels ── */
+  .labels-row {
+    display: flex; gap: .75rem; align-items: center; flex-wrap: wrap;
+    margin-top: 1rem;
+  }
+  .label-input {
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text); font-family: var(--mono); font-size: .78rem;
+    padding: .3rem .5rem; border-radius: 5px; width: 90px;
+    transition: border-color .15s;
+  }
+  .label-input:focus { outline: none; border-color: var(--accent); }
+  .labels-sep { color: var(--muted); font-size: .75rem; }
+
+  /* ── table ── */
+  .table-scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; }
+  th, td { padding: .55rem .6rem; }
+
+  th.corner { width: 80px; }
+  th.col-head {
+    background: var(--surface);
+    color: var(--accent); font-family: var(--mono); font-size: .75rem;
+    border: 1px solid var(--border); text-align: center;
+  }
+  th.row-head {
+    background: var(--surface);
+    color: var(--accent2); font-family: var(--mono); font-size: .75rem;
+    border: 1px solid var(--border); text-align: right; white-space: nowrap;
+  }
+  td.cell {
+    border: 1px solid var(--border);
+    background: var(--bg);
+    text-align: center; padding: .3rem;
+  }
+  .cell-input {
+    width: 68px; background: transparent;
+    border: none; color: var(--text);
+    font-family: var(--mono); font-size: .9rem;
+    text-align: center; padding: .2rem;
+    transition: all .15s;
+  }
+  .cell-input:focus { outline: none; }
+  td.cell:focus-within {
+    background: rgba(91,107,255,.12);
+    border-color: var(--accent);
+  }
+  td.cell.highlight { background: rgba(107,255,184,.06); border-color: var(--accent3); }
+
+  /* ── row/col totals ── */
+  td.total-cell, th.total-head {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    font-family: var(--mono); font-size: .8rem;
+    color: var(--muted); text-align: center;
+  }
+
+  /* ── buttons ── */
+  .btn-row { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .btn {
+    font-family: var(--mono); font-size: .82rem; font-weight: 700;
+    padding: .6rem 1.4rem; border-radius: 7px; cursor: pointer;
+    border: none; transition: all .2s; letter-spacing: .04em;
+  }
+  .btn-primary {
+    background: var(--accent); color: #fff;
+    box-shadow: 0 0 20px rgba(91,107,255,.3);
+  }
+  .btn-primary:hover { background: #4a58f0; box-shadow: 0 0 30px rgba(91,107,255,.5); transform: translateY(-1px); }
+  .btn-ghost {
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+  .btn-demo {
+    background: transparent; color: var(--accent3);
+    border: 1px solid rgba(107,255,184,.3);
+  }
+  .btn-demo:hover { background: rgba(107,255,184,.08); border-color: var(--accent3); }
+
+  /* ── results ── */
+  #results { display: none; }
+  #results.visible { display: block; }
+
+  .result-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .result-box {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.2rem 1rem;
+    text-align: center;
+    transition: transform .2s;
+  }
+  .result-box:hover { transform: translateY(-2px); }
+  .result-box .val {
+    font-family: var(--mono); font-size: 2rem; font-weight: 700;
+    line-height: 1;
+  }
+  .result-box .lbl {
+    font-size: .7rem; color: var(--muted); margin-top: .4rem;
+    text-transform: uppercase; letter-spacing: .1em;
+  }
+  .val-chi  { color: var(--accent); }
+  .val-df   { color: var(--accent3); }
+  .val-p    { color: var(--accent2); }
+  .val-v    { color: #f9ca74; }
+  .val-n    { color: var(--muted); }
+
+  /* verdict banner */
+  .verdict {
+    border-radius: 8px; padding: 1rem 1.2rem;
+    font-size: .9rem; line-height: 1.5;
+    border-left: 3px solid;
+    margin-bottom: 1.5rem;
+  }
+  .verdict.sig   { background: rgba(255,107,107,.08); border-color: var(--accent2); }
+  .verdict.nosig { background: rgba(107,255,184,.05); border-color: var(--accent3); }
+  .verdict strong { font-size: 1rem; display: block; margin-bottom: .3rem; }
+
+  /* expected table */
+  .sub-title {
+    font-size: .7rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: .75rem;
+  }
+  td.exp-cell {
+    border: 1px solid var(--border);
+    font-family: var(--mono); font-size: .78rem;
+    text-align: center; padding: .4rem .5rem;
+    transition: background .3s;
+  }
+  td.exp-cell.warn { background: rgba(255,107,107,.15); color: var(--accent2); }
+  td.exp-cell.ok   { background: rgba(107,255,184,.05); color: var(--accent3); }
+
+  /* contribution table */
+  td.contrib-cell {
+    border: 1px solid var(--border);
+    font-family: var(--mono); font-size: .78rem;
+    text-align: center; padding: .4rem .5rem;
+  }
+  .contrib-bar {
+    display: block; height: 3px; border-radius: 2px;
+    background: var(--accent); margin-top: 3px;
+    transition: width .4s ease;
+  }
+
+  /* warnings */
+  .warn-box {
+    background: rgba(255,107,107,.08); border: 1px solid rgba(255,107,107,.3);
+    border-radius: 8px; padding: .8rem 1rem; margin-bottom: 1rem;
+    font-size: .82rem; color: #ffaaaa; font-family: var(--mono);
+  }
+  .warn-box::before { content: '⚠ '; }
+
+  /* error */
+  .error-box {
+    background: rgba(255,107,107,.12); border: 1px solid var(--accent2);
+    border-radius: 8px; padding: 1rem 1.2rem;
+    color: var(--accent2); font-family: var(--mono); font-size: .85rem;
+  }
+
+  /* p-level legend */
+  .p-legend {
+    display: flex; gap: .5rem; flex-wrap: wrap;
+    margin-top: 1rem; font-size: .72rem; font-family: var(--mono); color: var(--muted);
+  }
+  .p-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 3px; }
+
+  /* tabs */
+  .tabs { display: flex; gap: .4rem; margin-bottom: 1rem; }
+  .tab {
+    font-family: var(--mono); font-size: .75rem; padding: .4rem .9rem;
+    border-radius: 5px; cursor: pointer; border: 1px solid var(--border);
+    background: var(--surface); color: var(--muted); transition: all .15s;
+  }
+  .tab.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* formula box */
+  .formula {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 1rem 1.2rem;
+    font-family: var(--mono); font-size: .82rem; color: var(--muted);
+    line-height: 2;
+  }
+  .formula .sym { color: var(--accent); font-weight: 700; }
+  .formula .val2 { color: var(--accent3); }
+
+  /* animate in */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-in { animation: fadeUp .35s ease forwards; }
+
+  /* responsive */
+  @media (max-width: 600px) {
+    .chi-symbol { font-size: 3.5rem; }
+    header h1 { font-size: 1.2rem; }
+    .cell-input { width: 52px; }
+  }
+
+
+  /* ── Compact One-Pager Integration ── */
+  :root {
+    --bg:#f8fbff; --surface:#f2f7ff; --card:#ffffff; --border:#d6e5ff;
+    --accent:#6ee7f9; --accent2:#a78bfa; --accent3:#34d399;
+    --text:#13213f; --muted:#52617e;
+    --mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;
+    --sans:Inter,Segoe UI,Roboto,Arial,sans-serif;
+  }
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:auto;padding:12px;}
+  body::before{display:none;}
+  .wrap{max-width:none;margin:0;}
+  header{display:flex;align-items:center;gap:.85rem;text-align:left;margin:0 0 1rem;padding:.15rem .2rem;}
+  .chi-symbol{font-size:2.25rem;animation:none;filter:none;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  header h1{font-size:1.18rem;line-height:1.15;margin:0;letter-spacing:-.03em;color:var(--text);}
+  header p{font-size:.78rem;margin:.15rem 0 0;color:var(--muted);font-family:var(--mono);}
+  .card{background:var(--card);border:1px solid #dfe7fb;border-radius:16px;padding:1rem;margin-bottom:1rem;box-shadow:0 8px 22px rgba(30,50,100,.07);}
+  .card-title,.sub-title{font-size:.72rem;color:#566585;margin-bottom:.7rem;}
+  .card-title span{color:#4338ca;}
+  .size-row{gap:.55rem;}
+  .size-row label{color:#566585;}
+  .size-btn{background:#f8fbff;border-color:#cfdaf2;color:#13213f;border-radius:10px;}
+  .size-btn:hover{border-color:#6ee7f9;color:#0f172a;}
+  .size-badge{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071225;border-radius:9px;}
+  .label-input{background:#f8fbff;border:1px solid #cfdaf2;color:#11203d;border-radius:10px;}
+  th,td{padding:.42rem .46rem;}
+  th.col-head,th.row-head,td.total-cell,th.total-head{background:#f2f7ff;border-color:#d6e5ff;color:#385079;}
+  th.row-head{color:#6d4bd6;}
+  td.cell{background:#ffffff;border-color:#d6e5ff;}
+  .cell-input{width:58px;color:#11203d;font-size:.86rem;}
+  td.cell:focus-within{background:#eefcff;border-color:#6ee7f9;}
+  .btn-row{gap:.5rem;margin-top:.9rem;}
+  .btn{border-radius:11px;padding:.52rem .85rem;font-size:.76rem;}
+  .btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#071225;box-shadow:0 10px 24px rgba(110,231,249,.18);}
+  .btn-ghost{background:#fff;color:#52617e;border:1px solid #cfdaf2;}
+  .btn-demo{background:#fff;color:#047857;border:1px solid #b7f7d0;}
+  .result-grid{grid-template-columns:repeat(5,minmax(110px,1fr));gap:.7rem;margin-bottom:1rem;}
+  .result-box{background:#f8fbff;border:1px solid #d6e5ff;border-radius:14px;padding:.8rem .65rem;}
+  .result-box .val{font-size:1.25rem;}
+  .result-box .lbl{font-size:.62rem;color:#64748b;}
+  .val-chi{color:#4338ca}.val-df{color:#059669}.val-p{color:#be185d}.val-v{color:#b45309}.val-n{color:#52617e}
+  .verdict{border-radius:14px;padding:.8rem 1rem;margin-bottom:1rem;font-size:.84rem;color:#13213f;}
+  .verdict.sig{background:#fff1f2;border-color:#fb7185}.verdict.nosig{background:#ecfdf5;border-color:#34d399}
+  .tabs{flex-wrap:wrap;}
+  .tab{background:#f8fbff;border-color:#cfdaf2;color:#52617e;border-radius:10px;}
+  .tab.active{background:linear-gradient(135deg,var(--accent),var(--accent2));border-color:transparent;color:#071225;}
+  td.exp-cell,td.contrib-cell{border-color:#d6e5ff;color:#13213f;}
+  td.exp-cell.ok{background:#ecfdf5;color:#047857} td.exp-cell.warn{background:#fff1f2;color:#be123c}
+  .warn-box{background:#fff7ed;border-color:#fed7aa;color:#9a3412;border-radius:14px;}
+  .error-box{background:#fff1f2;border-color:#fb7185;color:#be123c;border-radius:14px;}
+  .formula{background:#0f172a;color:#dffbff;border-radius:14px;}
+  .p-legend{font-size:.67rem;}
+  @media (max-width:760px){
+    body{padding:10px}.result-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cell-input{width:48px}.labels-row{gap:.45rem}.label-input{width:78px}header{align-items:flex-start}.chi-symbol{font-size:1.8rem}.card{padding:.85rem}
+  }
+
+  /* Final compact embedding: intentionally smaller than the standalone χ² app */
+  body{padding:6px!important;font-size:13px!important;background:#f8fbff!important;}
+  header{display:none!important;}
+  .wrap{max-width:100%!important;}
+  .card{padding:.65rem!important;margin-bottom:.55rem!important;border-radius:12px!important;box-shadow:none!important;}
+  .card-title,.sub-title{font-size:.62rem!important;margin-bottom:.45rem!important;letter-spacing:.08em!important;}
+  .size-row{gap:.4rem!important;}
+  .size-btn{width:26px!important;height:26px!important;border-radius:8px!important;}
+  .size-badge{font-size:.72rem!important;padding:.12rem .45rem!important;}
+  .labels-row{gap:.35rem!important;margin-top:.45rem!important;}
+  .label-input{width:72px!important;font-size:.68rem!important;padding:.18rem .32rem!important;border-radius:8px!important;}
+  th,td{padding:.24rem .28rem!important;}
+  .cell-input{width:44px!important;font-size:.76rem!important;padding:.05rem!important;}
+  .btn-row{gap:.35rem!important;margin-top:.55rem!important;}
+  .btn{padding:.38rem .62rem!important;border-radius:9px!important;font-size:.68rem!important;}
+  .result-grid{grid-template-columns:repeat(5,minmax(80px,1fr))!important;gap:.45rem!important;margin-bottom:.55rem!important;}
+  .result-box{padding:.5rem .35rem!important;border-radius:10px!important;}
+  .result-box .val{font-size:1rem!important;}
+  .result-box .lbl{font-size:.52rem!important;letter-spacing:.07em!important;}
+  .verdict{padding:.55rem .7rem!important;font-size:.74rem!important;margin-bottom:.55rem!important;}
+  .p-legend{display:none!important;}
+  .tabs{gap:.25rem!important;margin-bottom:.55rem!important;}
+  .tab{font-size:.65rem!important;padding:.28rem .55rem!important;border-radius:8px!important;}
+  .formula{font-size:.68rem!important;padding:.65rem!important;line-height:1.6!important;}
+  .warn-box,.error-box{font-size:.68rem!important;padding:.55rem!important;margin-bottom:.55rem!important;}
+  #results .card:nth-child(2){margin-top:.55rem!important;}
+  @media (max-width:760px){.result-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.cell-input{width:40px!important}.label-input{width:68px!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="chi-symbol">χ²</span>
+    <h1>Chi-Quadrat Rechner</h1>
+    <p>n × n Kreuztabelle · Unabhängigkeitstest</p>
+  </header>
+
+  <!-- ── SETUP CARD ── -->
+  <div class="card">
+    <div class="card-title"><span>01</span> · Tabellengröße & Beschriftung</div>
+
+    <div class="size-row">
+      <label>Zeilen:</label>
+      <div class="size-btn-group">
+        <button class="size-btn" onclick="resize('rows',-1)">−</button>
+        <span class="size-badge" id="rows-badge">3</span>
+        <button class="size-btn" onclick="resize('rows',+1)">+</button>
+      </div>
+      <span class="sep">×</span>
+      <label>Spalten:</label>
+      <div class="size-btn-group">
+        <button class="size-btn" onclick="resize('cols',-1)">−</button>
+        <span class="size-badge" id="cols-badge">3</span>
+        <button class="size-btn" onclick="resize('cols',+1)">+</button>
+      </div>
+    </div>
+
+    <div style="margin-top:1rem;">
+      <div class="card-title" style="margin-bottom:.5rem;">Zeilenbeschriftungen</div>
+      <div class="labels-row" id="row-labels"></div>
+      <div class="card-title" style="margin-bottom:.5rem; margin-top:1rem;">Spaltenbeschriftungen</div>
+      <div class="labels-row" id="col-labels"></div>
+    </div>
+  </div>
+
+  <!-- ── DATA CARD ── -->
+  <div class="card">
+    <div class="card-title"><span>02</span> · Beobachtete Häufigkeiten eingeben</div>
+    <div class="table-scroll" id="table-wrap"></div>
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="calculate()">χ² Berechnen</button>
+      <button class="btn btn-ghost" onclick="clearTable()">Leeren</button>
+      <button class="btn btn-demo" onclick="loadDemo(1)">Demo 1 (3×3)</button>
+      <button class="btn btn-demo" onclick="loadDemo(2)">Demo 2 (2×4)</button>
+    </div>
+  </div>
+
+  <!-- ── RESULTS ── -->
+  <div id="results">
+
+    <div class="card fade-in" id="summary-card">
+      <div class="card-title"><span>03</span> · Ergebnisse</div>
+
+      <div id="error-area"></div>
+
+      <div class="result-grid" id="result-grid">
+        <div class="result-box">
+          <div class="val val-chi" id="res-chi">—</div>
+          <div class="lbl">χ² Prüfgröße</div>
+        </div>
+        <div class="result-box">
+          <div class="val val-df" id="res-df">—</div>
+          <div class="lbl">Freiheitsgrade (df)</div>
+        </div>
+        <div class="result-box">
+          <div class="val val-p" id="res-p">—</div>
+          <div class="lbl">p-Wert (approx.)</div>
+        </div>
+        <div class="result-box">
+          <div class="val val-v" id="res-v">—</div>
+          <div class="lbl">Cramér's V</div>
+        </div>
+        <div class="result-box">
+          <div class="val val-n" id="res-n">—</div>
+          <div class="lbl">N (Gesamt)</div>
+        </div>
+      </div>
+
+      <div id="verdict-box"></div>
+
+      <div class="p-legend">
+        <span><span class="p-dot" style="background:#ff6b6b"></span>p &lt; .001 hochsignifikant</span>
+        <span><span class="p-dot" style="background:#f9ca74"></span>p &lt; .01 sehr signifikant</span>
+        <span><span class="p-dot" style="background:#5b6bff"></span>p &lt; .05 signifikant</span>
+        <span><span class="p-dot" style="background:#7a7f96"></span>p ≥ .05 nicht signifikant</span>
+      </div>
+    </div>
+
+    <div class="card fade-in">
+      <div class="card-title"><span>04</span> · Detailansicht</div>
+      <div class="tabs">
+        <div class="tab active" onclick="switchTab(this,'exp')">Erwartete Häufigkeiten</div>
+        <div class="tab" onclick="switchTab(this,'contrib')">χ²-Beiträge</div>
+        <div class="tab" onclick="switchTab(this,'formula')">Formeln</div>
+      </div>
+
+      <div class="tab-panel active" id="tab-exp">
+        <div class="sub-title">E<sub>ij</sub> = (Zeilensumme × Spaltensumme) / N &nbsp;·&nbsp; <span style="color:var(--accent2)">rot = E &lt; 5 (Voraussetzung verletzt)</span></div>
+        <div class="table-scroll" id="exp-table-wrap"></div>
+        <div id="exp-warnings"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-contrib">
+        <div class="sub-title">(O − E)² / E pro Zelle · Balken zeigen relativen Anteil am Gesamt-χ²</div>
+        <div class="table-scroll" id="contrib-table-wrap"></div>
+      </div>
+
+      <div class="tab-panel" id="tab-formula">
+        <div class="formula" id="formula-box"></div>
+      </div>
+    </div>
+
+  </div><!-- /results -->
+
+</div><!-- /wrap -->
+
+<script>
+// ─────────────────────────────────────────
+//  STATE
+// ─────────────────────────────────────────
+let rows = 3, cols = 3;
+let data = Array.from({length: rows}, () => Array(cols).fill(''));
+let rowLabels = ['Gruppe A','Gruppe B','Gruppe C'];
+let colLabels = ['Kat. 1','Kat. 2','Kat. 3'];
+
+// ─────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  renderLabels(); renderTable();
+});
+
+// ─────────────────────────────────────────
+//  RESIZE
+// ─────────────────────────────────────────
+function resize(dim, delta) {
+  if (dim === 'rows') {
+    const n = Math.max(2, Math.min(8, rows + delta));
+    if (n === rows) return;
+    // sync data & labels
+    if (n > rows) {
+      for (let r = rows; r < n; r++) {
+        data.push(Array(cols).fill(''));
+        rowLabels.push('Gruppe ' + String.fromCharCode(65 + r));
+      }
+    } else {
+      data = data.slice(0, n);
+      rowLabels = rowLabels.slice(0, n);
+    }
+    rows = n;
+    document.getElementById('rows-badge').textContent = rows;
+  } else {
+    const n = Math.max(2, Math.min(8, cols + delta));
+    if (n === cols) return;
+    if (n > cols) {
+      data.forEach(r => { for (let c = cols; c < n; c++) r.push(''); });
+      for (let c = cols; c < n; c++) colLabels.push('Kat. ' + (c + 1));
+    } else {
+      data = data.map(r => r.slice(0, n));
+      colLabels = colLabels.slice(0, n);
+    }
+    cols = n;
+    document.getElementById('cols-badge').textContent = cols;
+  }
+  renderLabels(); renderTable(); hideResults();
+}
+
+// ─────────────────────────────────────────
+//  RENDER LABEL INPUTS
+// ─────────────────────────────────────────
+function renderLabels() {
+  const rl = document.getElementById('row-labels');
+  const cl = document.getElementById('col-labels');
+  rl.innerHTML = ''; cl.innerHTML = '';
+
+  rowLabels.forEach((lbl, i) => {
+    const inp = document.createElement('input');
+    inp.className = 'label-input'; inp.value = lbl;
+    inp.placeholder = 'Zeile ' + (i+1);
+    inp.addEventListener('input', e => { rowLabels[i] = e.target.value; syncTableHeaders(); });
+    rl.appendChild(inp);
+  });
+
+  colLabels.forEach((lbl, i) => {
+    const inp = document.createElement('input');
+    inp.className = 'label-input'; inp.value = lbl;
+    inp.placeholder = 'Spalte ' + (i+1);
+    inp.addEventListener('input', e => { colLabels[i] = e.target.value; syncTableHeaders(); });
+    cl.appendChild(inp);
+  });
+}
+
+// ─────────────────────────────────────────
+//  RENDER OBSERVED TABLE
+// ─────────────────────────────────────────
+function renderTable() {
+  const wrap = document.getElementById('table-wrap');
+  const tbl = document.createElement('table');
+
+  // header row
+  const thead = tbl.createTHead();
+  const hr = thead.insertRow();
+  const corner = document.createElement('th');
+  corner.className = 'corner col-head'; corner.textContent = 'O ᵢⱼ';
+  hr.appendChild(corner);
+  colLabels.forEach((lbl, j) => {
+    const th = document.createElement('th');
+    th.className = 'col-head'; th.id = 'col-head-' + j;
+    th.textContent = lbl || ('Sp. '+(j+1));
+    hr.appendChild(th);
+  });
+  const thSum = document.createElement('th');
+  thSum.className = 'total-head'; thSum.textContent = 'Σ Zeile';
+  hr.appendChild(thSum);
+
+  // body
+  const tbody = tbl.createTBody();
+  for (let i = 0; i < rows; i++) {
+    const tr = tbody.insertRow();
+    const th = document.createElement('th');
+    th.className = 'row-head'; th.id = 'row-head-' + i;
+    th.textContent = rowLabels[i] || ('Z. '+(i+1));
+    tr.appendChild(th);
+    for (let j = 0; j < cols; j++) {
+      const td = document.createElement('td');
+      td.className = 'cell'; td.id = 'cell-' + i + '-' + j;
+      const inp = document.createElement('input');
+      inp.className = 'cell-input'; inp.type = 'number';
+      inp.min = '0'; inp.step = '1';
+      inp.value = data[i][j] !== '' ? data[i][j] : '';
+      inp.placeholder = '0';
+      inp.addEventListener('input', e => {
+        data[i][j] = e.target.value;
+        updateTotals();
+      });
+      inp.addEventListener('keydown', e => {
+        if (e.key === 'Tab' || e.key === 'Enter') { /* natural tab */ }
+        if (e.key === 'ArrowRight') focusCell(i, j+1);
+        if (e.key === 'ArrowLeft')  focusCell(i, j-1);
+        if (e.key === 'ArrowDown')  { e.preventDefault(); focusCell(i+1, j); }
+        if (e.key === 'ArrowUp')    { e.preventDefault(); focusCell(i-1, j); }
+      });
+      td.appendChild(inp);
+      tr.appendChild(td);
+    }
+    const tdSum = document.createElement('td');
+    tdSum.className = 'total-cell'; tdSum.id = 'row-sum-' + i; tdSum.textContent = '—';
+    tr.appendChild(tdSum);
+  }
+
+  // footer totals row
+  const tfoot = tbl.createTFoot();
+  const fr = tfoot.insertRow();
+  const fth = document.createElement('th');
+  fth.className = 'total-head'; fth.textContent = 'Σ Spalte';
+  fr.appendChild(fth);
+  for (let j = 0; j < cols; j++) {
+    const td = document.createElement('td');
+    td.className = 'total-cell'; td.id = 'col-sum-' + j; td.textContent = '—';
+    fr.appendChild(td);
+  }
+  const tdN = document.createElement('td');
+  tdN.className = 'total-cell'; tdN.id = 'grand-total'; tdN.textContent = '—';
+  fr.appendChild(tdN);
+
+  wrap.innerHTML = '';
+  wrap.appendChild(tbl);
+  updateTotals();
+}
+
+function focusCell(r, c) {
+  if (r < 0 || r >= rows || c < 0 || c >= cols) return;
+  const cell = document.getElementById('cell-' + r + '-' + c);
+  if (cell) cell.querySelector('input').focus();
+}
+
+function syncTableHeaders() {
+  rowLabels.forEach((lbl, i) => {
+    const el = document.getElementById('row-head-' + i);
+    if (el) el.textContent = lbl || ('Z. '+(i+1));
+  });
+  colLabels.forEach((lbl, j) => {
+    const el = document.getElementById('col-head-' + j);
+    if (el) el.textContent = lbl || ('Sp. '+(j+1));
+  });
+}
+
+function updateTotals() {
+  let grand = 0;
+  for (let i = 0; i < rows; i++) {
+    let rsum = 0;
+    for (let j = 0; j < cols; j++) {
+      const v = parseFloat(data[i][j]);
+      if (!isNaN(v) && v >= 0) rsum += v;
+    }
+    const el = document.getElementById('row-sum-' + i);
+    if (el) el.textContent = rsum || '—';
+    grand += rsum;
+  }
+  for (let j = 0; j < cols; j++) {
+    let csum = 0;
+    for (let i = 0; i < rows; i++) {
+      const v = parseFloat(data[i][j]);
+      if (!isNaN(v) && v >= 0) csum += v;
+    }
+    const el = document.getElementById('col-sum-' + j);
+    if (el) el.textContent = csum || '—';
+  }
+  const gt = document.getElementById('grand-total');
+  if (gt) gt.textContent = grand || '—';
+}
+
+// ─────────────────────────────────────────
+//  CALCULATE
+// ─────────────────────────────────────────
+function calculate() {
+  const O = [];
+  for (let i = 0; i < rows; i++) {
+    O.push([]);
+    for (let j = 0; j < cols; j++) {
+      const v = parseFloat(data[i][j]);
+      O[i].push(isNaN(v) || v < 0 ? 0 : v);
+    }
+  }
+
+  const rowSums = O.map(r => r.reduce((s,v)=>s+v,0));
+  const colSums = Array.from({length: cols}, (_,j) => O.reduce((s,r)=>s+r[j],0));
+  const N = rowSums.reduce((s,v)=>s+v,0);
+
+  // validation
+  const errArea = document.getElementById('error-area');
+  errArea.innerHTML = '';
+  if (N === 0) {
+    errArea.innerHTML = '<div class="error-box">Alle Zellen sind leer oder null. Bitte Daten eingeben.</div>';
+    showResults(); return;
+  }
+  if (rowSums.some(s=>s===0) || colSums.some(s=>s===0)) {
+    errArea.innerHTML = '<div class="error-box">Mindestens eine Zeile oder Spalte hat die Summe 0. Bitte prüfen.</div>';
+    showResults(); return;
+  }
+
+  // expected
+  const E = O.map((r,i) => r.map((_,j) => (rowSums[i] * colSums[j]) / N));
+
+  // chi²
+  let chi2 = 0;
+  const contrib = O.map((r,i) => r.map((o,j) => {
+    const e = E[i][j];
+    const c = Math.pow(o - e, 2) / e;
+    chi2 += c; return c;
+  }));
+
+  const df = (rows - 1) * (cols - 1);
+  const p = 1 - chiCDF(chi2, df);
+  const V = Math.sqrt(chi2 / (N * (Math.min(rows, cols) - 1)));
+
+  // display
+  document.getElementById('res-chi').textContent = chi2.toFixed(3);
+  document.getElementById('res-df').textContent  = df;
+  document.getElementById('res-p').textContent   = fmtP(p);
+  document.getElementById('res-v').textContent   = V.toFixed(3);
+  document.getElementById('res-n').textContent   = N;
+
+  // color p-value
+  const pEl = document.getElementById('res-p');
+  if (p < .001) pEl.style.color = '#ff6b6b';
+  else if (p < .01) pEl.style.color = '#f9ca74';
+  else if (p < .05) pEl.style.color = '#5b6bff';
+  else pEl.style.color = 'var(--accent3)';
+
+  // verdict
+  const vb = document.getElementById('verdict-box');
+  const sig = p < .05;
+  const alpha = p < .001 ? '(p < .001, hochsignifikant)' : p < .01 ? '(p < .01, sehr signifikant)' : p < .05 ? '(p < .05, signifikant)' : '(p ≥ .05)';
+  const vStr = V < .1 ? 'vernachlässigbar' : V < .3 ? 'schwach' : V < .5 ? 'mittel' : 'stark';
+  vb.innerHTML = sig
+    ? `<div class="verdict sig"><strong>✓ Signifikanter Zusammenhang ${alpha}</strong>
+       H₀ (Unabhängigkeit) wird abgelehnt. Es besteht ein statistisch signifikanter Zusammenhang zwischen den Variablen. 
+       Cramér's V = ${V.toFixed(3)} → Effektstärke: <strong>${vStr}</strong>.</div>`
+    : `<div class="verdict nosig"><strong>✗ Kein signifikanter Zusammenhang ${alpha}</strong>
+       H₀ (Unabhängigkeit) kann nicht abgelehnt werden. Kein statistisch bedeutsamer Zusammenhang nachweisbar.
+       Cramér's V = ${V.toFixed(3)} → Effektstärke: <strong>${vStr}</strong>.</div>`;
+
+  // expected table
+  buildExpTable(E, rowSums, colSums);
+
+  // contrib table
+  buildContribTable(contrib, chi2);
+
+  // formula
+  buildFormula(chi2, df, N, p, V);
+
+  showResults();
+}
+
+// ─────────────────────────────────────────
+//  EXPECTED TABLE
+// ─────────────────────────────────────────
+function buildExpTable(E, rowSums, colSums) {
+  const wrap = document.getElementById('exp-table-wrap');
+  const tbl = document.createElement('table');
+  const thead = tbl.createTHead();
+  const hr = thead.insertRow();
+  const corner = document.createElement('th');
+  corner.className = 'col-head corner'; corner.textContent = 'E ᵢⱼ';
+  hr.appendChild(corner);
+  colLabels.forEach((lbl, j) => {
+    const th = document.createElement('th');
+    th.className = 'col-head'; th.textContent = lbl || 'Sp.'+(j+1);
+    hr.appendChild(th);
+  });
+
+  const tbody = tbl.createTBody();
+  let warnCount = 0;
+  E.forEach((row, i) => {
+    const tr = tbody.insertRow();
+    const th = document.createElement('th');
+    th.className = 'row-head'; th.textContent = rowLabels[i] || 'Z.'+(i+1);
+    tr.appendChild(th);
+    row.forEach(e => {
+      const td = document.createElement('td');
+      td.className = 'exp-cell ' + (e < 5 ? 'warn' : 'ok');
+      td.textContent = e.toFixed(2);
+      if (e < 5) warnCount++;
+      tr.appendChild(td);
+    });
+  });
+
+  wrap.innerHTML = ''; wrap.appendChild(tbl);
+
+  const warnArea = document.getElementById('exp-warnings');
+  if (warnCount > 0) {
+    const total = rows * cols;
+    const pct = (warnCount / total * 100).toFixed(0);
+    warnArea.innerHTML = `<div class="warn-box">${warnCount} von ${total} Zellen (${pct}%) haben E &lt; 5. 
+    ${pct > 20 ? 'Mehr als 20% – χ²-Approximation kann unzuverlässig sein. Exakter Fisher-Test empfohlen.' : 'Unter 20% – Approximation noch akzeptabel.'}</div>`;
+  } else {
+    warnArea.innerHTML = '';
+  }
+}
+
+// ─────────────────────────────────────────
+//  CONTRIBUTION TABLE
+// ─────────────────────────────────────────
+function buildContribTable(contrib, chi2) {
+  const wrap = document.getElementById('contrib-table-wrap');
+  const maxC = Math.max(...contrib.flat());
+  const tbl = document.createElement('table');
+  const thead = tbl.createTHead();
+  const hr = thead.insertRow();
+  const corner = document.createElement('th');
+  corner.className = 'col-head corner'; corner.textContent = '(O−E)²/E';
+  hr.appendChild(corner);
+  colLabels.forEach((lbl, j) => {
+    const th = document.createElement('th');
+    th.className = 'col-head'; th.textContent = lbl || 'Sp.'+(j+1);
+    hr.appendChild(th);
+  });
+
+  const tbody = tbl.createTBody();
+  contrib.forEach((row, i) => {
+    const tr = tbody.insertRow();
+    const th = document.createElement('th');
+    th.className = 'row-head'; th.textContent = rowLabels[i] || 'Z.'+(i+1);
+    tr.appendChild(th);
+    row.forEach(c => {
+      const td = document.createElement('td');
+      td.className = 'contrib-cell';
+      const pct = chi2 > 0 ? (c / chi2 * 100).toFixed(1) : 0;
+      const barW = maxC > 0 ? (c / maxC * 100).toFixed(1) : 0;
+      td.innerHTML = `${c.toFixed(3)}<br><small style="color:var(--muted)">${pct}%</small>
+        <span class="contrib-bar" style="width:${barW}%"></span>`;
+      tr.appendChild(td);
+    });
+  });
+
+  wrap.innerHTML = ''; wrap.appendChild(tbl);
+}
+
+// ─────────────────────────────────────────
+//  FORMULA BOX
+// ─────────────────────────────────────────
+function buildFormula(chi2, df, N, p, V) {
+  document.getElementById('formula-box').innerHTML = `
+    <div><span class="sym">Prüfgröße:</span> χ² = Σ (O<sub>ij</sub> − E<sub>ij</sub>)² / E<sub>ij</sub> = <span class="val2">${chi2.toFixed(4)}</span></div>
+    <div><span class="sym">Freiheitsgrade:</span> df = (r − 1)(c − 1) = (${rows}−1)(${cols}−1) = <span class="val2">${df}</span></div>
+    <div><span class="sym">Erwartete Häufigkeit:</span> E<sub>ij</sub> = (Σ<sub>i</sub> · Σ<sub>j</sub>) / N</div>
+    <div><span class="sym">Cramér's V:</span> V = √(χ² / (N · (min(r,c) − 1))) = √(${chi2.toFixed(3)} / (${N} · ${Math.min(rows,cols)-1})) = <span class="val2">${V.toFixed(4)}</span></div>
+    <div><span class="sym">p-Wert:</span> P(χ²<sub>(${df})</sub> ≥ ${chi2.toFixed(3)}) = <span class="val2">${fmtP(p)}</span></div>
+    <div style="margin-top:.5rem; color:var(--muted); font-size:.72rem;">
+      Voraussetzung: N ≥ 20 · Alle E<sub>ij</sub> ≥ 1 · Max. 20% der Zellen mit E &lt; 5
+    </div>`;
+}
+
+// ─────────────────────────────────────────
+//  HELPERS
+// ─────────────────────────────────────────
+function showResults() {
+  const r = document.getElementById('results');
+  r.classList.add('visible');
+  r.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+function hideResults() {
+  document.getElementById('results').classList.remove('visible');
+}
+
+function clearTable() {
+  data = Array.from({length: rows}, () => Array(cols).fill(''));
+  renderTable(); hideResults();
+}
+
+function fmtP(p) {
+  if (p < .0001) return '< .0001';
+  return p.toFixed(4);
+}
+
+function switchTab(el, id) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+// ─────────────────────────────────────────
+//  DEMO DATA
+// ─────────────────────────────────────────
+function loadDemo(n) {
+  if (n === 1) {
+    rows = 3; cols = 3;
+    rowLabels = ['Männer','Frauen','Divers'];
+    colLabels = ['Zustimmung','Neutral','Ablehnung'];
+    data = [[45,30,25],[20,50,30],[10,15,5]];
+  } else {
+    rows = 2; cols = 4;
+    rowLabels = ['Behandlung','Kontrolle'];
+    colLabels = ['Sehr gut','Gut','Mäßig','Schlecht'];
+    data = [[40,30,15,5],[10,20,30,40]];
+  }
+  document.getElementById('rows-badge').textContent = rows;
+  document.getElementById('cols-badge').textContent = cols;
+  renderLabels(); renderTable(); hideResults();
+  // sync stored values
+  for (let i=0;i<rows;i++) for (let j=0;j<cols;j++) {
+    const inp = document.querySelector(`#cell-${i}-${j} input`);
+    if (inp) inp.value = data[i][j];
+  }
+  updateTotals();
+}
+
+// ─────────────────────────────────────────
+//  CHI² CDF (regularized incomplete gamma)
+// ─────────────────────────────────────────
+function chiCDF(x, df) {
+  if (x <= 0) return 0;
+  return regularizedGammaP(df / 2, x / 2);
+}
+
+function regularizedGammaP(a, x) {
+  if (x < 0) return 0;
+  if (x === 0) return 0;
+  if (x < a + 1) return gammaSeries(a, x);
+  return 1 - gammaCF(a, x);
+}
+
+function gammaSeries(a, x) {
+  const MAX_ITER = 200, EPS = 3e-10;
+  let ap = a, sum = 1 / a, del = sum;
+  for (let n = 1; n <= MAX_ITER; n++) {
+    ap++; del *= x / ap; sum += del;
+    if (Math.abs(del) < Math.abs(sum) * EPS) break;
+  }
+  return sum * Math.exp(-x + a * Math.log(x) - lnGamma(a));
+}
+
+function gammaCF(a, x) {
+  const MAX_ITER = 200, EPS = 3e-10, FPMIN = 1e-300;
+  let b = x + 1 - a, c = 1 / FPMIN, d = 1 / b, h = d;
+  for (let i = 1; i <= MAX_ITER; i++) {
+    const an = -i * (i - a);
+    b += 2; d = an * d + b;
+    if (Math.abs(d) < FPMIN) d = FPMIN;
+    c = b + an / c;
+    if (Math.abs(c) < FPMIN) c = FPMIN;
+    d = 1 / d; const del = d * c; h *= del;
+    if (Math.abs(del - 1) < EPS) break;
+  }
+  return Math.exp(-x + a * Math.log(x) - lnGamma(a)) * h;
+}
+
+function lnGamma(x) {
+  const c = [76.18009172947146,-86.50532032941677,24.01409824083091,
+              -1.231739572450155,.1208650973866179e-2,-.5395239384953e-5];
+  let y = x, tmp = x + 5.5;
+  tmp -= (x + .5) * Math.log(tmp);
+  let ser = 1.000000000190015;
+  for (let j=0;j<6;j++) ser += c[j]/++y;
+  return -tmp + Math.log(2.5066282746310005 * ser / x);
+}
+</script>
+</body>
+</html>
+
+</template>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const frame=document.getElementById('chiQuadratFrame');
+  const template=document.getElementById('chiQuadratTemplate');
+  if(frame && template){ frame.srcdoc = template.innerHTML; }
+});
+</script>
+<script>
+const modules=[
+{n:'01',title:'1.2 Methoden der Statistik · Darstellung von Häufigkeitsverteilungen',tags:['Daten','Urliste','absolute/relative Häufigkeit','Diagramme'],goal:'Grundbegriffe der Statistik verstehen und Daten tabellarisch sowie grafisch darstellen.',exam:'Erstelle aus Rohdaten eine Häufigkeitstabelle und interpretiere die kumulierte relative Häufigkeit.'},
+{n:'02',title:'1.3.1 Kennzahlen der Lage',tags:['Mittelwert','Median','Modus','Ausreißer'],goal:'Lagemaße berechnen und beurteilen, wann welches Lagemaß sinnvoll ist.',exam:'Warum kann der Mittelwert bei extremen Werten täuschen? Nenne ein Beispiel.'},
+{n:'03',title:'Übung · Häufigkeitsverteilung',tags:['Klausurpunkte','Prozent','Summenhäufigkeit'],goal:'Eine vollständige Häufigkeitsverteilung aus diskreten Daten aufbauen.',exam:'Berechne relative Häufigkeit, Prozent und kumulierte relative Häufigkeit.'},
+{n:'04',title:'1.3.2 Kennzahlen der Streuung · Varianz und Standardabweichung',tags:['Varianz','Standardabweichung','Abweichung vom Mittelwert'],goal:'Streuung als durchschnittliche Abweichung vom Mittelwert verstehen.',exam:'Berechne s² und s und interpretiere, welcher Datensatz stärker streut.'},
+{n:'05',title:'1.3.3 Konzentration · Einführung 1.3.4 Zusammenhang',tags:['Lorenzkurve','Konzentration','Chi-Quadrat','Kreuztabelle'],goal:'Konzentration grafisch darstellen und Zusammenhänge kategorialer Merkmale prüfen.',exam:'Erkläre, was eine Lorenzkurve zeigt und wann ein χ²-Test eingesetzt wird.'},
+{n:'06',title:'1.3.4 Zusammenhang · Lineare Regression',tags:['Kovarianz','Korrelation','Regression','R²'],goal:'Richtung und Stärke metrischer Zusammenhänge messen und Regression interpretieren.',exam:'Interpretiere Steigung b und Bestimmtheitsmaß R² in einem Marketingbeispiel.'},
+{n:'07',title:'Übungen · Lineare Regression',tags:['Werbung','Webseitenbesuche','Sales','Scatterplot'],goal:'Lineare Regression an Beispieldaten rechnen und Ergebnisse einordnen.',exam:'Berechne ŷ = a + b·x und erkläre, ob das Modell gut passt.'},
+{n:'08',title:'2 Wahrscheinlichkeitstheorie',tags:['Zufallsexperiment','Ereignis','Wahrscheinlichkeit','Simulation'],goal:'Grundkonzepte der Wahrscheinlichkeitstheorie anhand einfacher Beispiele verstehen.',exam:'Unterscheide Ergebnis, Ereignis und Wahrscheinlichkeit am Beispiel Würfel.'},
+{n:'09',title:'2.2.2 Normalverteilung',tags:['Dichte','Fläche','μ','σ','Sigma-Regeln'],goal:'Normalverteilung als stetige Verteilung interpretieren und Sigma-Regeln anwenden.',exam:'Warum berechnet man bei stetigen Verteilungen Wahrscheinlichkeiten für Intervalle?'},
+{n:'10',title:'Übungen Normalverteilung · Z-Score · Klausur-Eingrenzung',tags:['Z-Standardisierung','Vergleichbarkeit','Ausreißer','Klausur'],goal:'Z-Scores berechnen und Werte unterschiedlicher Verteilungen vergleichbar machen.',exam:'Berechne Z=(x−μ)/σ und interpretiere, ob der Wert über oder unter dem Durchschnitt liegt.'}
+];
+const toc=document.getElementById('toc'), modDiv=document.getElementById('modules');
+modules.forEach((m,i)=>{let b=document.createElement('button');b.innerHTML=`<span class="pill">Teil ${m.n}</span><br>${m.title.split('·')[0]}`;b.onclick=()=>document.getElementById('m'+i).scrollIntoView({behavior:'smooth'});toc.appendChild(b);let d=document.createElement('article');d.className='module';d.id='m'+i;d.innerHTML=`<div class="moduleHead"><div><span class="badge">Teil ${m.n}</span><h3>${m.title}</h3></div></div><p><b>Lernziel:</b> ${m.goal}</p><p><b>Typische Klausurfrage:</b> ${m.exam}</p><div>${m.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><label class="check"><input type="checkbox" class="done" data-i="${i}"> <span>Ich kann dieses Thema erklären und mindestens eine Aufgabe dazu rechnen.</span></label>`;modDiv.appendChild(d)});
+function updateProgress(){let c=[...document.querySelectorAll('.done')].filter(x=>x.checked).length;document.getElementById('progressBar').style.width=(c/modules.length*100)+'%';document.getElementById('progressText').textContent=`${c} von ${modules.length} Teilen abgeschlossen`;localStorage.setItem('statProgress',JSON.stringify([...document.querySelectorAll('.done')].map(x=>x.checked)))}
+document.addEventListener('change',e=>{if(e.target.classList.contains('done'))updateProgress()});try{JSON.parse(localStorage.getItem('statProgress')||'[]').forEach((v,i)=>{let el=document.querySelectorAll('.done')[i]; if(el)el.checked=v});updateProgress()}catch(e){}
+function nums(s){return s.split(/[;,\s]+/).map(x=>Number(String(x).replace(',','.'))).filter(x=>!isNaN(x))} function mean(a){return a.reduce((s,x)=>s+x,0)/a.length} function variance(a){let m=mean(a);return a.reduce((s,x)=>s+(x-m)**2,0)/a.length} function median(a){let b=[...a].sort((x,y)=>x-y),n=b.length;return n%2?b[(n-1)/2]:(b[n/2-1]+b[n/2])/2} function mode(a){let m=new Map();a.forEach(x=>m.set(x,(m.get(x)||0)+1));let max=Math.max(...m.values());return [...m.entries()].filter(e=>e[1]==max).map(e=>e[0]).join(', ')}
+function clear(c){let ctx=c.getContext('2d');ctx.clearRect(0,0,c.width,c.height);ctx.font='13px Segoe UI';ctx.fillStyle='#13213f';return ctx} function axes(ctx,w,h){ctx.strokeStyle='#c8d4ee';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(45,15);ctx.lineTo(45,h-35);ctx.lineTo(w-15,h-35);ctx.stroke()}
+function calcFreq(){let a=nums(freqData.value);if(!a.length)return;let counts={};a.forEach(x=>counts[x]=(counts[x]||0)+1);let keys=Object.keys(counts).map(Number).sort((x,y)=>x-y);let cum=0,out='Wert | h | p | % | kumuliert\n';keys.forEach(k=>{cum+=counts[k]/a.length;out+=`${k} | ${counts[k]} | ${(counts[k]/a.length).toFixed(3)} | ${(100*counts[k]/a.length).toFixed(1)}% | ${cum.toFixed(3)}\n`});freqOut.textContent=out;let c=freqCanvas,ctx=clear(c),max=Math.max(...Object.values(counts));axes(ctx,c.width,c.height);let bw=(c.width-80)/keys.length;keys.forEach((k,i)=>{let bar=(c.height-55)*counts[k]/max;ctx.fillStyle='#6ee7f9';ctx.fillRect(55+i*bw,c.height-35-bar,bw*.7,bar);ctx.fillStyle='#13213f';ctx.fillText(k,60+i*bw,c.height-14);ctx.fillText(counts[k],60+i*bw,c.height-42-bar)})}
+function calcStats(){let a=nums(statData.value);if(!a.length)return;let m=mean(a),v=variance(a),s=Math.sqrt(v);statOut.textContent=`n = ${a.length}\nMittelwert x̄ = ${m.toFixed(3)}\nMedian = ${median(a).toFixed(3)}\nModus = ${mode(a)}\nVarianz s² = ${v.toFixed(3)}\nStandardabweichung s = ${s.toFixed(3)}\nInterpretation: Die Werte weichen typischerweise etwa ${s.toFixed(2)} Einheiten vom Mittelwert ab.`}
+function calcLorenz(){let a=nums(lorenzData.value).filter(x=>x>=0).sort((x,y)=>x-y);if(!a.length)return;let sum=a.reduce((s,x)=>s+x,0),cx=[0],cy=[0],cum=0;for(let i=0;i<a.length;i++){cum+=a[i];cx.push((i+1)/a.length);cy.push(cum/sum)}let area=0;for(let i=1;i<cx.length;i++)area+=(cy[i]+cy[i-1])*(cx[i]-cx[i-1])/2;let gini=1-2*area;lorenzOut.textContent=`Summe = ${sum.toFixed(2)}\nNäherungsweise Gini-Koeffizient = ${gini.toFixed(3)}\nInterpretation: 0 bedeutet Gleichverteilung, größere Werte zeigen stärkere Konzentration.`;let c=lorenzCanvas,ctx=clear(c),w=c.width,h=c.height;axes(ctx,w,h);function px(x){return 45+x*(w-70)}function py(y){return h-35-y*(h-55)}ctx.strokeStyle='#c8d4ee';ctx.beginPath();ctx.moveTo(px(0),py(0));ctx.lineTo(px(1),py(1));ctx.stroke();ctx.strokeStyle='#a78bfa';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(px(cx[0]),py(cy[0]));for(let i=1;i<cx.length;i++)ctx.lineTo(px(cx[i]),py(cy[i]));ctx.stroke();ctx.fillText('Gleichverteilung',px(.56),py(.62));ctx.fillText('Lorenzkurve',px(.55),py(.35))}
+
+let regMode='data';
+function setRegMode(mode){
+  regMode=mode;
+  document.getElementById('regDataBtn').classList.toggle('active',mode==='data');
+  document.getElementById('regSimBtn').classList.toggle('active',mode==='sim');
+  document.getElementById('regDataPanel').classList.toggle('hidden',mode!=='data');
+  document.getElementById('regSimPanel').classList.toggle('hidden',mode!=='sim');
+  if(mode==='sim'){
+    let {x,y,n}=getRegSample();
+    if(n>=2){
+      let mx=mean(x),my=mean(y),vx=variance(x);
+      let sxy=x.reduce((s,xi,i)=>s+(xi-mx)*(y[i]-my),0)/n;
+      if(vx>0){
+        let b=sxy/vx, a=my-b*mx;
+        let simSlope=document.getElementById('simSlope');
+        let simIntercept=document.getElementById('simIntercept');
+        let bMag=Math.max(2, Math.abs(b)*2);
+        let aMag=Math.max(10, Math.abs(a)*2);
+        simSlope.min=(b-bMag).toFixed(1);
+        simSlope.max=(b+bMag).toFixed(1);
+        simSlope.value=b.toFixed(2);
+        simIntercept.min=(a-aMag).toFixed(1);
+        simIntercept.max=(a+aMag).toFixed(1);
+        simIntercept.value=a.toFixed(2);
+      }
+    }
+    drawRegSimulation();
+  } else calcReg();
+}
+
+function getRegSample(){
+  let x=nums(xData.value),y=nums(yData.value);let n=Math.min(x.length,y.length);return {x:x.slice(0,n),y:y.slice(0,n),n};
+}
+
+function drawRegChart(x,y,a,b,showPoints=true){
+  let c=regCanvas,ctx=clear(c),w=c.width,h=c.height;axes(ctx,w,h);
+  if(!x.length){return}
+  let yLine=x.map(xi=>a+b*xi), allY=showPoints?y.concat(yLine):yLine;
+  let xmin=Math.min(...x),xmax=Math.max(...x),ymin=Math.min(...allY),ymax=Math.max(...allY);
+  if(xmin===xmax){xmin-=1;xmax+=1} if(ymin===ymax){ymin-=1;ymax+=1}
+  let yPad=(ymax-ymin)*0.15||1; ymin-=yPad; ymax+=yPad;
+  function px(v){return 50+(v-xmin)/(xmax-xmin)*(w-80)}
+  function py(v){return h-40-(v-ymin)/(ymax-ymin)*(h-60)}
+  ctx.fillStyle='#13213f';ctx.font='12px Segoe UI';ctx.fillText('x',w-24,h-15);ctx.fillText('y',25,22);
+  if(showPoints){ctx.fillStyle='#6ee7f9';x.forEach((xi,i)=>{ctx.beginPath();ctx.arc(px(xi),py(y[i]),5,0,7);ctx.fill();ctx.strokeStyle='#0f172a';ctx.lineWidth=1;ctx.stroke()});}
+  ctx.strokeStyle='#fb7185';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(px(xmin),py(a+b*xmin));ctx.lineTo(px(xmax),py(a+b*xmax));ctx.stroke();
+  ctx.fillStyle='#fb7185';ctx.fillText('ŷ = b₀ + b₁·x',px(xmin)+8,py(a+b*xmin)-8);
+}
+
+function calculateR2(x, y) {
+  if (x.length !== y.length || x.length < 2) return 0;
+  const mx = mean(x), my = mean(y);
+  let sst = 0, sxx = 0, sxy = 0;
+  for (let i = 0; i < x.length; i++) {
+    sst += (y[i] - my) ** 2;
+    sxx += (x[i] - mx) ** 2;
+    sxy += (x[i] - mx) * (y[i] - my);
+  }
+  if (sst === 0 || sxx === 0) return 0;
+  const r = sxy / Math.sqrt(sxx * sst);
+  return Math.max(0, Math.min(1, r * r));
+}
+
+function calculateLineFitR2(y, yhat){
+  if(!Array.isArray(y)||!Array.isArray(yhat)||y.length!==yhat.length||y.length<2) return 0;
+  const my=mean(y);
+  const sst=y.reduce((s,yi)=>s+(yi-my)**2,0);
+  if(sst===0) return 0;
+  const sse=y.reduce((s,yi,i)=>s+(yi-yhat[i])**2,0);
+  
+  // Didaktische Begrenzung wiederhergestellt: R² sinkt höchstens auf 0 ab!
+  return Math.max(0, 1-(sse/sst)); 
+}
+
+function updateRegKpis(a,b,r2){
+  const r2txt=isFinite(r2)?r2.toFixed(4):'—';
+  regR2Kpi.textContent=`R² = ${r2txt}`;
+  regEqKpi.textContent=`ŷ = ${a.toFixed(2)} + ${b.toFixed(2)}·x`;
+}
+
+function calcReg(){
+  let {x,y,n}=getRegSample();if(n<2)return;
+  let mx=mean(x),my=mean(y),sxy=x.reduce((s,xi,i)=>s+(xi-mx)*(y[i]-my),0)/n,vx=variance(x),vy=variance(y);
+  if(vx===0||vy===0){regOut.textContent='Für Regression und R² werden mindestens zwei unterschiedliche x- und y-Werte benötigt.';return;}
+  let b=sxy/vx,a=my-b*mx,r2=calculateR2(x,y);
+  let r=Math.sqrt(r2) * (sxy < 0 ? -1 : 1);
+  updateRegKpis(a,b,r2);
+  regOut.textContent=`Datenmodus\nRegressionsgerade: ŷ = ${a.toFixed(3)} + ${b.toFixed(3)}·x\nr = ${r.toFixed(3)}\nR² = ${r2.toFixed(4)}\nInterpretation R²: Das Modell erklärt ca. ${(r2*100).toFixed(1)}% der Streuung von y durch x.\nInterpretation Steigung: Steigt x um 1, verändert sich y im Modell um ${b.toFixed(2)} Einheiten. Der Achsenabschnitt ${a.toFixed(2)} ist der geschätzte y-Wert bei x = 0.`;
+  drawRegChart(x,y,a,b,true);
+}
+
+function drawRegSimulation(){
+  const b=+simSlope.value, a=+simIntercept.value;
+  simSlopeVal.textContent=b.toFixed(2); simInterceptVal.textContent=a.toFixed(2); simEquation.textContent=`ŷ = ${a.toFixed(2)} + ${b.toFixed(2)}·x`;
+  let {x,y,n}=getRegSample();
+  if(n<2){x=[0,1,2,3,4,5,6];y=x.map(xi=>a+b*xi);n=x.length;}
+  const yhat=x.map(xi=>a+b*xi);
+  const r2=calculateLineFitR2(y,yhat);
+  updateRegKpis(a,b,r2);
+  regOut.textContent=`Simulationsmodus
+Gerade: ŷ = ${a.toFixed(2)} + ${b.toFixed(2)}·x
+R² = ${r2.toFixed(4)} → Anpassungsgüte der manuell eingestellten Geraden.
+Steigung b₁ = ${b.toFixed(2)}: Wenn x um 1 steigt, verändert sich y um ${b.toFixed(2)}.
+Y-Achsenabschnitt b₀ = ${a.toFixed(2)}: Bei x = 0 liegt die Gerade bei y = ${a.toFixed(2)}.
+
+Didaktischer Hinweis: R² ist ein Maß zwischen 0 und 1 (bzw. 0% und 100%). Wenn die manuell eingestellte Gerade die Daten schlechter beschreibt als ein einfacher Durchschnitt, sinkt die erklärte Varianz auf 0.`;
+  drawRegChart(x,y,a,b,true);
+}
+
+function resetRegSimulation(){setRegMode('sim');}
+
+function calcChi(){let O=[+chiA.value,+chiB.value,+chiC.value,+chiD.value];if(O.some(isNaN))return;let r1=O[0]+O[1],r2=O[2]+O[3],c1=O[0]+O[2],c2=O[1]+O[3],n=r1+r2;let E=[r1*c1/n,r1*c2/n,r2*c1/n,r2*c2/n];let chi=O.reduce((s,o,i)=>s+(o-E[i])**2/E[i],0);let phi=Math.sqrt(chi/n);chiOut.textContent=`Erwartete Werte: ${E.map(x=>x.toFixed(2)).join(', ')}\nχ² = ${chi.toFixed(3)}\nφ/Cramer V bei 2×2 = ${phi.toFixed(3)}\nInterpretation: Je größer χ², desto stärker weichen beobachtete von erwarteten Häufigkeiten ab.`}
+function diceEventLabel(k,ev){let max=6*k,thr=Math.ceil(3.5*k);if(ev==='max')return `Augensumme = ${max}`;if(ev==='atLeastOne6')return 'mindestens eine 6';if(ev==='evenSum')return 'gerade Augensumme';if(ev==='sumGE')return `Augensumme ≥ ${thr}`;if(ev==='allSame')return k===2?'Pasch':'Drilling';return 'Ereignis'}
+function updateDiceEvents(){let k=Math.max(1,Math.min(3,+diceCount.value||1));let opts=[['max',`Augensumme = ${6*k}`],['atLeastOne6','mindestens eine 6'],['evenSum','gerade Augensumme'],['sumGE',`Augensumme ≥ ${Math.ceil(3.5*k)}`]];if(k>1)opts.push(['allSame',k===2?'Pasch':'Drilling']);let current=diceEvent.value;diceEvent.innerHTML=opts.map(o=>`<option value="${o[0]}">${o[1]}</option>`).join('');if(opts.some(o=>o[0]===current))diceEvent.value=current}
+function diceHits(roll,ev,k){let sum=roll.reduce((a,b)=>a+b,0);if(ev==='max')return sum===6*k;if(ev==='atLeastOne6')return roll.some(d=>d===6);if(ev==='evenSum')return sum%2===0;if(ev==='sumGE')return sum>=Math.ceil(3.5*k);if(ev==='allSame')return roll.every(d=>d===roll[0]);return false}
+function enumerateDice(k,ev){let total=6**k,hit=0;function rec(pos,roll){if(pos===k){if(diceHits(roll,ev,k))hit++;return}for(let d=1;d<=6;d++){roll[pos]=d;rec(pos+1,roll)}}rec(0,[]);return hit/total}
+function simDice(){updateDiceEvents();let N=Math.max(1,+diceN.value||1),k=Math.max(1,Math.min(3,+diceCount.value||1)),ev=diceEvent.value,min=k,maxSum=6*k,counts=Array(maxSum-min+1).fill(0),hit=0;for(let i=0;i<N;i++){let roll=[],sum=0;for(let j=0;j<k;j++){let d=1+Math.floor(Math.random()*6);roll.push(d);sum+=d}counts[sum-min]++;if(diceHits(roll,ev,k))hit++}let theo=enumerateDice(k,ev);diceOut.textContent=`Würfel = ${k}
+Ereignis: ${diceEventLabel(k,ev)}
+Treffer = ${hit} von ${N}
+relative Häufigkeit = ${(hit/N).toFixed(3)}
+theoretische Wahrscheinlichkeit = ${theo.toFixed(3)}`;let c=diceCanvas,ctx=clear(c),max=Math.max(...counts,1);axes(ctx,c.width,c.height);let bw=(c.width-80)/counts.length;counts.forEach((v,i)=>{let bar=(c.height-55)*v/max;ctx.fillStyle='#86efac';ctx.fillRect(55+i*bw,c.height-35-bar,Math.max(2,bw*.7),bar);ctx.fillStyle='#13213f';let label=i+min;if(counts.length<=12 || i%2===0)ctx.fillText(label,58+i*bw,c.height-14);if(v>0)ctx.fillText(v,55+i*bw,c.height-42-bar)})}
+setTimeout(()=>{if(typeof diceCount!=='undefined')updateDiceEvents()},0)
+function erf(x){let sign=x>=0?1:-1;x=Math.abs(x);let a1=.254829592,a2=-.284496736,a3=1.421413741,a4=-1.453152027,a5=1.061405429,p=.3275911,t=1/(1+p*x);let y=1-(((((a5*t+a4)*t)+a3)*t+a2)*t+a1)*t*Math.exp(-x*x);return sign*y}function Phi(z){return .5*(1+erf(z/Math.SQRT2))}
+function calcZ(){let x=+zX.value,mu=+zMu.value,sg=+zSigma.value;if(!sg)return;let z=(x-mu)/sg;zOut.textContent=`Z = (${x} − ${mu}) / ${sg} = ${z.toFixed(3)}\nInterpretation: Der Wert liegt ${Math.abs(z).toFixed(2)} Standardabweichungen ${z>=0?'über':'unter'} dem Mittelwert.\nLinksseitige Wahrscheinlichkeit Φ(z) ≈ ${Phi(z).toFixed(4)}.`}
+function calcNormal(){let mu=+nMu.value,sg=+nSigma.value,a=+nA.value,b=+nB.value;if(!sg)return;if(a>b)[a,b]=[b,a];let za=(a-mu)/sg,zb=(b-mu)/sg,p=Phi(zb)-Phi(za);normalOut.textContent=`z(a)=${za.toFixed(2)}, z(b)=${zb.toFixed(2)}\nP(${a} ≤ X ≤ ${b}) ≈ ${(100*p).toFixed(2)}%`;let c=normalCanvas,ctx=clear(c),w=c.width,h=c.height;let xmin=mu-4*sg,xmax=mu+4*sg;function dens(x){return Math.exp(-.5*((x-mu)/sg)**2)/(sg*Math.sqrt(2*Math.PI))}let ymax=dens(mu);function px(x){return 45+(x-xmin)/(xmax-xmin)*(w-65)}function py(y){return h-35-y/ymax*(h-60)}axes(ctx,w,h);ctx.beginPath();for(let i=0;i<=240;i++){let x=xmin+(xmax-xmin)*i/240,y=dens(x);if(i==0)ctx.moveTo(px(x),py(y));else ctx.lineTo(px(x),py(y))}ctx.strokeStyle='#13213f';ctx.lineWidth=2;ctx.stroke();ctx.fillStyle='rgba(110,231,249,.45)';ctx.beginPath();ctx.moveTo(px(a),py(0));for(let i=0;i<=160;i++){let x=a+(b-a)*i/160;ctx.lineTo(px(x),py(dens(x)))}ctx.lineTo(px(b),py(0));ctx.closePath();ctx.fill();ctx.fillStyle='#13213f';ctx.fillText('μ',px(mu)-4,h-14);ctx.fillText('a',px(a)-4,h-14);ctx.fillText('b',px(b)-4,h-14)}
+
+function parseCategoryCounts(txt){
+  let parts=txt.split(/[;\n]+|,(?=\s*[^,]+[:=])/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length===1 && txt.includes(',')) parts=txt.split(',').map(s=>s.trim()).filter(Boolean);
+  let rows=[];
+  parts.forEach((part,idx)=>{
+    let m=part.match(/^(.+?)\s*[:=]\s*(-?\d+(?:[\.,]\d+)?)$/);
+    if(m){rows.push({cat:m[1].trim(),count:Math.max(0,parseFloat(m[2].replace(',','.'))||0)});}
+    else{
+      let v=part.trim();
+      if(v) rows.push({cat:v,count:1});
+    }
+  });
+  if(rows.length && rows.every(r=>r.count===1) && !txt.includes(':') && !txt.includes('=')){
+    const map={}; rows.forEach(r=>map[r.cat]=(map[r.cat]||0)+1);
+    rows=Object.keys(map).sort((a,b)=>parseFloat(a)-parseFloat(b)||a.localeCompare(b)).map(k=>({cat:k,count:map[k]}));
+  }
+  return rows.filter(r=>r.cat!=='' && r.count>=0);
+}
+function calcRelFreq(){
+  const rows=parseCategoryCounts(relFreqData.value);
+  const N=rows.reduce((s,r)=>s+r.count,0);
+  if(!rows.length || N<=0){relFreqOut.textContent='Bitte Daten im Format Kategorie: Häufigkeit eingeben, z. B. 15:4, 16:8, 17:12.';return;}
+  const table=rows.map(r=>`${r.cat}: h=${r.count}, p=${(r.count/N).toFixed(3)}, ${(100*r.count/N).toFixed(1)}%`).join('\n');
+  const top=rows.reduce((a,b)=>a.count>=b.count?a:b);
+  relFreqOut.textContent=`n = ${N}\n${table}\nInterpretation: Die häufigste Ausprägung ist ${top.cat} mit ${(100*top.count/N).toFixed(1)}% der Klasse.`;
+  if(relChartType.value==='pie') drawRelPie(rows,N); else drawRelBar(rows,N);
+}
+function drawRelBar(rows,N){
+  const c=relFreqCanvas,ctx=clear(c),w=c.width,h=c.height;
+  axes(ctx,w,h);
+  const max=Math.max(...rows.map(r=>r.count/N),0.01),bw=(w-90)/rows.length;
+  ctx.fillStyle='#13213f';ctx.font='12px Inter, Arial';ctx.fillText(relFreqLabel.value||'Kategorie',w/2-35,h-8);ctx.save();ctx.translate(14,h/2+45);ctx.rotate(-Math.PI/2);ctx.fillText('Relative Häufigkeit',0,0);ctx.restore();
+  rows.forEach((r,i)=>{
+    const p=r.count/N,bar=(h-70)*p/max,x=55+i*bw,y=h-35-bar;
+    const grd=ctx.createLinearGradient(0,y,0,h-35);grd.addColorStop(0,'#6ee7f9');grd.addColorStop(1,'#a78bfa');
+    ctx.fillStyle=grd;ctx.fillRect(x,y,Math.max(12,bw*.62),bar);
+    ctx.fillStyle='#13213f';ctx.textAlign='center';ctx.fillText(r.cat,x+Math.max(12,bw*.62)/2,h-16);ctx.fillText((100*p).toFixed(1)+'%',x+Math.max(12,bw*.62)/2,Math.max(18,y-7));
+  });
+  ctx.textAlign='left';
+}
+function drawRelPie(rows,N){
+  const c=relFreqCanvas,ctx=clear(c),w=c.width,h=c.height;
+  const cx=w*.34,cy=h*.52,R=Math.min(w,h)*.31;
+  let start=-Math.PI/2;
+  const colors=['#6ee7f9','#a78bfa','#86efac','#fbbf24','#fb7185','#93c5fd','#c4b5fd','#fdba74'];
+  rows.forEach((r,i)=>{
+    const p=r.count/N,ang=p*Math.PI*2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,R,start,start+ang);ctx.closePath();ctx.fillStyle=colors[i%colors.length];ctx.fill();ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke();
+    const mid=start+ang/2,lx=cx+Math.cos(mid)*(R+18),ly=cy+Math.sin(mid)*(R+18);
+    if(p>.07){ctx.fillStyle='#13213f';ctx.font='12px Inter, Arial';ctx.textAlign=lx>cx?'left':'right';ctx.fillText((100*p).toFixed(1)+'%',lx,ly);}
+    start+=ang;
+  });
+  ctx.textAlign='left';ctx.font='12px Inter, Arial';
+  rows.forEach((r,i)=>{let y=52+i*27;ctx.fillStyle=colors[i%colors.length];ctx.fillRect(w*.62,y-11,14,14);ctx.fillStyle='#13213f';ctx.fillText(`${r.cat}: ${r.count} (${(100*r.count/N).toFixed(1)}%)`,w*.62+22,y);});
+  ctx.font='13px Inter, Arial';ctx.fillText(relFreqLabel.value||'Kategorie',cx-R,24);
+}
+if(typeof relChartType!=='undefined') relChartType.addEventListener('change',calcRelFreq);
+
+const questions=[
+['Was misst die Standardabweichung?',['Die typische Streuung um den Mittelwert','Die Summe aller Werte','Den häufigsten Wert'],0,'Die Standardabweichung ist die Wurzel aus der Varianz und beschreibt die Streuung in Originaleinheiten.'],
+['Welches Lagemaß ist besonders robust gegen Ausreißer?',['Mittelwert','Median','Varianz'],1,'Der Median hängt von der Rangposition ab und wird von extremen Einzelwerten weniger beeinflusst.'],
+['Was bedeutet r = -0,8?',['Starker gegensinniger Zusammenhang','Kein Zusammenhang','Starker gleichsinniger Zusammenhang'],0,'Negatives Vorzeichen = gegensinnig, Betrag nahe 1 = stark.'],
+['Was beschreibt R²?',['Den erklärten Anteil der Streuung im Regressionsmodell','Die Steigung der Geraden','Die Anzahl der Beobachtungen'],0,'R² zeigt, wie gut die Regression die Variation der Zielgröße erklärt.'],
+['Bei einer stetigen Normalverteilung berechnet man Wahrscheinlichkeiten als ...',['Flächen unter der Dichtekurve','Balkenhöhen','absolute Häufigkeiten'],0,'Bei stetigen Merkmalen hat ein einzelner Punkt Wahrscheinlichkeit 0; relevant sind Intervalle.']
+];let qi=0;function showQ(){let q=questions[qi];qText.textContent=q[0];qOptions.innerHTML='';q[1].forEach((o,i)=>{let b=document.createElement('button');b.textContent=o;b.onclick=()=>{[...qOptions.children].forEach(x=>x.disabled=true);b.className=i==q[2]?'correct':'wrong';if(i!=q[2])qOptions.children[q[2]].className='correct';qFeedback.textContent=q[3]};qOptions.appendChild(b)});qFeedback.textContent='Wähle eine Antwort.'}function nextQuestion(){qi=(qi+1)%questions.length;showQ()}showQ();
+const cards=[['Relative Häufigkeit','Anteil einer Ausprägung an allen Beobachtungen: hᵢ/n.'],['Median','Wert in der Mitte der sortierten Daten. Bei gerader Anzahl: Durchschnitt der beiden mittleren Werte.'],['Varianz','Durchschnitt der quadrierten Abweichungen vom Mittelwert.'],['Kovarianz','Zeigt die gemeinsame Richtung zweier metrischer Merkmale, ist aber schwer in der Stärke zu interpretieren.'],['Korrelation r','Standardisierte Kovarianz zwischen −1 und +1.'],['Z-Score','Standardisierte Lage eines Wertes: Anzahl der Standardabweichungen vom Mittelwert.']];let ci=0,flipped=false;function renderCard(){flash.textContent=flipped?cards[ci][1]:cards[ci][0]}function flipCard(){flipped=!flipped;renderCard()}function nextCard(){ci=(ci+1)%cards.length;flipped=false;renderCard()}function prevCard(){ci=(ci-1+cards.length)%cards.length;flipped=false;renderCard()}renderCard();
+calcFreq();calcStats();calcLorenz();calcReg();simDice();calcZ();calcNormal();calcRelFreq();
+const navLinks=[...document.querySelectorAll('.nav a')];window.addEventListener('scroll',()=>{let current='';document.querySelectorAll('main .section').forEach(s=>{if(scrollY>=s.offsetTop-120)current=s.id});navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')=='#'+current))});
+</script>
+</body>
+</html>
