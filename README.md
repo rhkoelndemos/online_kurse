@@ -1,2 +1,5 @@
-# online_kurse
-RH Online Material
+# Online Material zu den Kursen 
+
+Prof. Dr. Theo Almeida Murphy
+
+theo.almeida-murphy@rh-koeln.de
